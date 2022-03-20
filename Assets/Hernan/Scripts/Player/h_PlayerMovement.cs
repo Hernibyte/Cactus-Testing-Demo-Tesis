@@ -66,11 +66,12 @@ public class h_PlayerMovement : MonoBehaviour
         if (isJumping)
         {
             timer += Time.deltaTime;
-            if (timer <= 0.2f)
+            if (timer <= 0.22f)
                 rb2D.AddForce(new Vector2(0, stats.jumpForce) * curve.Evaluate(timer), ForceMode2D.Impulse);
             else
             {
                 isJumping = false;
+                timer = 0;
             }
         }
         
@@ -78,7 +79,7 @@ public class h_PlayerMovement : MonoBehaviour
         {
             if (timer <= 1) 
                 timer += Time.deltaTime;
-            rb2D.AddForce(Vector2.down * 60 * timer, ForceMode2D.Force);
+            rb2D.AddForce(Vector2.down * 200 * timer, ForceMode2D.Force);
         }
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
