@@ -11,8 +11,8 @@ public class h_PlayerMovement : MonoBehaviour
     [SerializeField] AnimationCurve curve;
     h_PlayerStats stats;
     Rigidbody2D rb2D;
-    bool isGrounded;
-    bool isJumping;
+    public bool isGrounded;
+    public bool isJumping;
     float timer;
 
     void Awake()
@@ -55,34 +55,70 @@ public class h_PlayerMovement : MonoBehaviour
     {
         Collider2D coll = Physics2D.OverlapBox(transform.position - new Vector3(0f, 0.12f, 0f), new Vector2(0.1f, 0.01f), 0, floorLayerMask);
 
-        if (isGrounded && !coll)
+        //
+
+        if (!coll)
             isGrounded = false;
-        else if (!isGrounded && coll)
-        {
+        else
             isGrounded = true;
+
+        if (isGrounded && !isJumping && Input.GetKeyDown(KeyCode.Space))
+            isJumping = true;
+
+        if (!isGrounded && !isJumping)
+        {
+            if (timer <= 1f)
+                timer += Time.deltaTime;
+            
+            rb2D.AddForce(Vector2.down * 200 * timer, ForceMode2D.Impulse);
+        }
+
+        if (isJumping && Input.GetKey(KeyCode.Space))
+        {
+            timer += Time.deltaTime;
+            if (timer >= 0.3f)
+            {
+                isJumping = false;
+                timer = 0f;
+            }
+            rb2D.AddForce(new Vector2(0, stats.jumpForce) * curve.Evaluate(timer), ForceMode2D.Force);
+        }
+        else
+        {
+            isJumping = false;
             timer = 0;
         }
 
-        if (isJumping)
-        {
-            timer += Time.deltaTime;
-            if (timer <= 0.22f)
-                rb2D.AddForce(new Vector2(0, stats.jumpForce) * curve.Evaluate(timer), ForceMode2D.Impulse);
-            else
-            {
-                isJumping = false;
-                timer = 0;
-            }
-        }
-        
-        if (!isGrounded && !isJumping)
-        {
-            if (timer <= 1) 
-                timer += Time.deltaTime;
-            rb2D.AddForce(Vector2.down * 200 * timer, ForceMode2D.Force);
-        }
+        //
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-            isJumping = true;
+        //if (isGrounded && !coll)
+        //    isGrounded = false;
+        //else if (!isGrounded && coll)
+        //{
+        //    isGrounded = true;
+        //    timer = 0;
+        //}
+        //
+        //if (isJumping)
+        //{
+        //    timer += Time.deltaTime;
+        //    if (timer <= 0.22f)
+        //        rb2D.AddForce(new Vector2(0, stats.jumpForce) * curve.Evaluate(timer), ForceMode2D.Impulse);
+        //    else
+        //    {
+        //        isJumping = false;
+        //        timer = 0;
+        //    }
+        //}
+        //
+        //if (!isGrounded && !isJumping)
+        //{
+        //    if (timer <= 1) 
+        //        timer += Time.deltaTime;
+        //    rb2D.AddForce(Vector2.down * 200 * timer, ForceMode2D.Force);
+        //}
+        //
+        //if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        //    isJumping = true;
     }
 }

@@ -598,19 +598,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0041770935
-      value: 0.20011139
-      inSlope: -1.0076305
-      outSlope: -1.0076305
+      time: 0.0030773757
+      value: 0.19915119
+      inSlope: -0.3048048
+      outSlope: -0.3048048
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.20246506
+      time: 0.23872584
+      value: 0.1273244
+      inSlope: -0.41378623
+      outSlope: -0.41378623
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.26350975
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29930496
       value: 0.0003104061
-      inSlope: -1.0076305
-      outSlope: -1.0076305
+      inSlope: -2.096663
+      outSlope: -2.096663
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -618,6 +627,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isGrounded: 0
+  isJumping: 0
 --- !u!114 &1150560645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  jumpForce: 12
+  jumpForce: 600
 --- !u!61 &1150560646
 BoxCollider2D:
   m_ObjectHideFlags: 0
