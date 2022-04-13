@@ -28,6 +28,12 @@ public class h_PlayerAttack : MonoBehaviour
         RangeAttack();
     }
 
+    void OnDrawGizmos()
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
+            Gizmos.DrawCube(meleeAttackPosition, new Vector3(0.2f, 0.12f, 0.12f));
+    }
+
     void MeleeAttack()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -41,6 +47,7 @@ public class h_PlayerAttack : MonoBehaviour
                     meleeAttackPosition = transform.position + (Vector3.left * 0.14f);
                     break;
             }
+
             Collider2D coll = Physics2D.OverlapBox(meleeAttackPosition, new Vector3(0.2f, 0.12f, 0.12f), 0, enemy_LayerMask);
             if (coll)
             {
