@@ -6,6 +6,7 @@ public class h_ThornBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] LayerMask floor_LayerMask;
+    [SerializeField] LayerMask enemy_LayerMask;
 
     void Update()
     {
@@ -21,5 +22,11 @@ public class h_ThornBehaviour : MonoBehaviour
     {
         if (h_Utils.LayerMaskContains(floor_LayerMask, other.gameObject.layer))
             Destroy(gameObject);
+        if (h_Utils.LayerMaskContains(enemy_LayerMask, other.gameObject.layer))
+        {
+            IHitable hitable = other.GetComponent<IHitable>();
+            hitable.Hited();
+            Destroy(gameObject);
+        }
     }
 }

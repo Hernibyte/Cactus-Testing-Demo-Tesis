@@ -15,3 +15,8 @@ public class h_Utils
         return mask == (mask | (1 << layer));
     }
 }
+
+interface IHitable
+{
+    void Hited();
+}

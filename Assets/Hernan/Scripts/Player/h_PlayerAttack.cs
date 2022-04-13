@@ -2,14 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum h_Direction
+{
+    Right,
+    Left,
+    Up,
+    Down
+}
+
 public class h_PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject simpleThorn;
     [SerializeField] GameObject chargedThorn;
     [SerializeField] Transform mouseWorldPosition;
+    [SerializeField] LayerMask enemy_LayerMask;
+    public h_Direction meleeAttackDirection;
 
     float delayRangeAttack = 0;
     float chargeRangeAttack = 0;
+    Vector2 meleeAttackPosition = new Vector2();
 
     void Update()
     {
@@ -21,7 +32,21 @@ public class h_PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            switch (meleeAttackDirection)
+            {
+                case h_Direction.Right:
+                    meleeAttackPosition = transform.position + (Vector3.right * 0.14f);
+                    break;
+                case h_Direction.Left:
+                    meleeAttackPosition = transform.position + (Vector3.left * 0.14f);
+                    break;
+            }
+            Collider2D coll = Physics2D.OverlapBox(meleeAttackPosition, new Vector3(0.2f, 0.12f, 0.12f), 0, enemy_LayerMask);
+            if (coll)
+            {
+                IHitable hitable = coll.GetComponent<IHitable>();
+                hitable.Hited();
+            }
         }
     }
 
