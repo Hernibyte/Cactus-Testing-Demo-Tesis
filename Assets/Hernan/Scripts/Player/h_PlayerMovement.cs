@@ -34,13 +34,20 @@ public class h_PlayerMovement : MonoBehaviour
         Jump();
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position - new Vector3(0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f));
+        Gizmos.DrawCube(transform.position - new Vector3(-0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f));
+        Gizmos.DrawCube(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.1f, 0.02f));
+    }
+
     /// <summary>
     /// Mueve al jugador en base a entradas de teclado.
     /// </summary>
     void Move()
     {
-        Collider2D coll1 = Physics2D.OverlapBox(transform.position - new Vector3(0.06f, 0f, 0f), new Vector2(0.01f, 0.18f), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position - new Vector3(-0.06f, 0f, 0f), new Vector2(0.01f, 0.18f), 0, floorLayerMask);
+        Collider2D coll1 = Physics2D.OverlapBox(transform.position - new Vector3(0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position - new Vector3(-0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f), 0, floorLayerMask);
 
         float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
 
@@ -66,7 +73,7 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        Collider2D coll = Physics2D.OverlapBox(transform.position - new Vector3(0f, 0.12f, 0f), new Vector2(0.1f, 0.01f), 0, floorLayerMask);
+        Collider2D coll = Physics2D.OverlapBox(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.1f, 0.02f), 0, floorLayerMask);
 
         if (coll)
             isGrounded = true;
