@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class h_EnemyBehaviour : MonoBehaviour, IHitable
 {
-    public void Hited()
+    public void Hited(float damage)
     {
         Destroy(gameObject);
     }

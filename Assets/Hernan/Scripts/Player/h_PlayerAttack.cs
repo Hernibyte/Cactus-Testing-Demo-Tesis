@@ -52,7 +52,7 @@ public class h_PlayerAttack : MonoBehaviour
             if (coll)
             {
                 IHitable hitable = coll.GetComponent<IHitable>();
-                hitable.Hited();
+                hitable.Hited(0);
             }
         }
     }

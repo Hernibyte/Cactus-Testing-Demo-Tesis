@@ -25,7 +25,7 @@ public class h_ThornBehaviour : MonoBehaviour
         if (h_Utils.LayerMaskContains(enemy_LayerMask, other.gameObject.layer))
         {
             IHitable hitable = other.GetComponent<IHitable>();
-            hitable.Hited();
+            hitable.Hited(0);
             Destroy(gameObject);
         }
     }

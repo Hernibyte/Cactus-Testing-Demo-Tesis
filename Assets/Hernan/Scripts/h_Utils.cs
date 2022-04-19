@@ -18,5 +18,5 @@ public class h_Utils
 
 interface IHitable
 {
-    void Hited();
+    void Hited(float damage);
 }
