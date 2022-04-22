@@ -36,9 +36,10 @@ public class h_PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position - new Vector3(0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f));
-        Gizmos.DrawCube(transform.position - new Vector3(-0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f));
-        Gizmos.DrawCube(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.1f, 0.02f));
+        Gizmos.DrawCube(transform.position - new Vector3(0.06f, 0.05f, 0f), new Vector2(0.01f, 0.32f));
+        Gizmos.DrawCube(transform.position - new Vector3(-0.06f, 0.05f, 0f), new Vector2(0.01f, 0.32f));
+        Gizmos.DrawCube(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.11f, 0.02f));
+        Gizmos.DrawCube(transform.position - new Vector3(0f, -0.12f, 0f), new Vector2(0.11f, 0.02f));
     }
 
     /// <summary>
@@ -74,9 +75,13 @@ public class h_PlayerMovement : MonoBehaviour
     void Jump()
     {
         Collider2D coll = Physics2D.OverlapBox(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.1f, 0.02f), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position - new Vector3(0f, -0.12f, 0f), new Vector2(0.11f, 0.02f), 0, floorLayerMask);
 
         if (coll)
+        {
+            timer = 0;
             isGrounded = true;
+        }
         else
             isGrounded = false;
 
@@ -108,6 +113,9 @@ public class h_PlayerMovement : MonoBehaviour
             if (timer < 1f)
                 timer += Time.deltaTime;
         }
+
+        if (coll2)
+            isJumping = false;
 
         //if (isGrounded && !isJumping && Input.GetKeyDown(KeyCode.Space))
         //{
