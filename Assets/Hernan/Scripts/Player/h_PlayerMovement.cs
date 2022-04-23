@@ -10,7 +10,7 @@ public class h_PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask floorLayerMask;
     [SerializeField] AnimationCurve curve;
     [SerializeField] AnimationCurve downCurve;
-    [SerializeField] float gravity = 4;
+    [SerializeField] float gravity = 3.5f;
 
     h_PlayerAttack playerAttack;
     h_PlayerStats stats;
