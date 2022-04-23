@@ -4,47 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class h_EnemyBehaviourEvent : UnityEvent<h_EnemyBehaviour> { }
-public enum h_EnemyState
-{
-    Idle,
-    Search,
-    Attack
-}
 
 public class h_EnemyBehaviour : MonoBehaviour, IHitable
 {
+    [SerializeField] LayerMask lm_Player;
     public h_EnemyBehaviourEvent imDie = new h_EnemyBehaviourEvent();
-    public h_EnemyState state;
 
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(state)
+        IHitable hitable;
+        if (collision.gameObject.TryGetComponent<IHitable>(out hitable))
         {
-            case h_EnemyState.Idle:
-                Idle();
-                break;
-            case h_EnemyState.Search:
-                Search();
-                break;
-                case h_EnemyState.Attack:
-                Attack();
-                break;
+            hitable.Hited(1);
         }
-    }
-
-    void Idle()
-    {
-        
-    }
-
-    void Search()
-    {
-
-    }
-
-    void Attack()
-    {
-
     }
 
     public void Hited(float damage)

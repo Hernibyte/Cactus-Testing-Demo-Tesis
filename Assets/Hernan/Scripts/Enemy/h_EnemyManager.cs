@@ -5,6 +5,7 @@ using UnityEngine;
 public class h_EnemyManager : MonoBehaviour
 {
     [SerializeField] List<h_EnemyBehaviour> enemyList;
+    [SerializeField] h_UIManager uIManager;
     int enemyAmount;
 
     void Awake()
@@ -21,7 +22,7 @@ public class h_EnemyManager : MonoBehaviour
         enemyAmount--;
         if (enemyAmount <= 0)
         {
-            Debug.Log("You win!");
+            uIManager.ShowYouWin();
         }
         enemyList.Remove(enemyBehaviour);
         Destroy(enemyBehaviour.gameObject);
