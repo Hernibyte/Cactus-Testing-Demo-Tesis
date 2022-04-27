@@ -36,10 +36,10 @@ public class h_PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position - new Vector3(0.06f, 0.05f, 0f), new Vector2(0.01f, 0.32f));
-        Gizmos.DrawCube(transform.position - new Vector3(-0.06f, 0.05f, 0f), new Vector2(0.01f, 0.32f));
-        Gizmos.DrawCube(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.11f, 0.02f));
-        Gizmos.DrawCube(transform.position - new Vector3(0f, -0.12f, 0f), new Vector2(0.11f, 0.02f));
+        Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(5, 1));
+        Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(5, 1));
+        Gizmos.DrawCube(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9));
+        Gizmos.DrawCube(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9));
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Collider2D coll1 = Physics2D.OverlapBox(transform.position - new Vector3(0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position - new Vector3(-0.06f, 0.06f, 0f), new Vector2(0.01f, 0.3f), 0, floorLayerMask);
+        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
 
         float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
 
@@ -74,8 +74,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        Collider2D coll = Physics2D.OverlapBox(transform.position - new Vector3(0f, 0.22f, 0f), new Vector2(0.1f, 0.02f), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position - new Vector3(0f, -0.12f, 0f), new Vector2(0.11f, 0.02f), 0, floorLayerMask);
+        Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(0, -5.45f, 0), new Vector2(5, 1), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(0, 3.54f, 0), new Vector2(5, 1), 0, floorLayerMask);
 
         if (coll)
         {
