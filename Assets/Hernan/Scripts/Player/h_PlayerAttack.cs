@@ -31,7 +31,9 @@ public class h_PlayerAttack : MonoBehaviour
     void OnDrawGizmos()
     {
         if (Input.GetKey(KeyCode.Mouse0))
-            Gizmos.DrawCube(meleeAttackPosition, new Vector3(0.2f, 0.12f, 0.12f));
+        {
+            Gizmos.DrawCube(meleeAttackPosition, new Vector3(9, 4.5f, 1));
+        }
     }
 
     void MeleeAttack()
@@ -41,14 +43,14 @@ public class h_PlayerAttack : MonoBehaviour
             switch (meleeAttackDirection)
             {
                 case h_Direction.Right:
-                    meleeAttackPosition = transform.position + (Vector3.right * 0.14f);
+                    meleeAttackPosition = transform.position + (Vector3.right * 6.5f);
                     break;
                 case h_Direction.Left:
-                    meleeAttackPosition = transform.position + (Vector3.left * 0.14f);
+                    meleeAttackPosition = transform.position + (Vector3.left * 6.5f);
                     break;
             }
 
-            Collider2D coll = Physics2D.OverlapBox(meleeAttackPosition, new Vector3(0.2f, 0.12f, 0.12f), 0, enemy_LayerMask);
+            Collider2D coll = Physics2D.OverlapBox(meleeAttackPosition, new Vector3(9, 4.5f, 1), 0, enemy_LayerMask);
             if (coll)
             {
                 IHitable hitable = coll.GetComponent<IHitable>();
