@@ -47,8 +47,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
+        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
 
         float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
 
