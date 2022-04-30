@@ -38,8 +38,8 @@ public class h_PlayerMovement : MonoBehaviour
     {
         Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(5, 1));
         Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(5, 1));
-        Gizmos.DrawCube(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9));
-        Gizmos.DrawCube(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9));
+        Gizmos.DrawCube(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f));
+        Gizmos.DrawCube(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f));
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
-        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(-2.5f, -1f, 0), new Vector2(1, 9), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
+        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
 
         float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
 
