@@ -9,41 +9,72 @@ using UnityEditor;
 public class Enemy : MonoBehaviour
 {
     #region Variables
-    int health;
-    int damage;
-    float speed;
-    bool detectsPlayer;
-    bool fly;
-    bool onEnemyDeath;
-    enum onDetect { chasesPlayer , flees , standsStill }
+    enum onDetect { chasesPlayer, flees, standsStill }
     enum flyIdleMovments { standStill, movesSideways, movesUpDown, patroll, moveRandom }
     enum groundIdleMovments { standStill, movesSideways, patroll, moveRandom }
-    enum attacksType { mele, shoot}
-    enum onDie { explode, generateOilPuddle}
+    enum attacksType { mele, shoot }
+    enum onDie { explode, generateOilPuddle }
     onDetect enemyAction;
     flyIdleMovments flyIdleEnemy;
     groundIdleMovments groundIdelEnemy;
     attacksType attackType;
     onDie dieActions;
+
+    int health;
+    int damage;
+    int moneyDrop;
+    float speed;
     float detectionRadio;
+    float activateChance;
+    float timer;
+    bool chanceOfActivateOnDeath;
+    bool detectsPlayer;
+    bool fly;
+    bool onEnemyDeath;
     bool attack;
     bool dropMoney;
-    int moneyDrop;
-    bool chanceOfActivateOnDeath;
-    float activateChance;
     bool startsGoingRight;
     bool startsGoingUp;
+
+    Vector2 randomGroundPatrol;
+    Vector2 randomFlyDirMax;
+    Vector2 randomFlyDirMin;
+
+    [SerializeField] Transform groundDetection;
+    RaycastHit2D groundDetector;
+    Vector3 rightEulerAngle = new Vector3(0, -180, 0);
+    Vector3 leftEulerAngle = new Vector3(0, -180, 0);
     #endregion
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        groundDetector = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
+        if (groundDetector.collider == false) 
+        { 
+            startsGoingRight = !startsGoingRight; 
+            if (transform.eulerAngles == rightEulerAngle) 
+            {
+                transform.eulerAngles = leftEulerAngle; 
+            } 
+            else 
+            {
+                transform.eulerAngles = rightEulerAngle;
+            }
+        };
         
+        if (startsGoingRight)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+        else 
+        { 
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
     }
 
     #region EnemyInspectorEditor
@@ -56,6 +87,17 @@ public class Enemy : MonoBehaviour
             base.OnInspectorGUI();
 
             Enemy enemy = (Enemy)target;
+            EditorUtility.SetDirty(target);
+            //EditorUtility.SetDirty(enemy);
+            BaseDetails(enemy);
+            MoneyDetails(enemy);
+            MovmentDetails(enemy);
+            BehaviorDetails(enemy);
+
+        }
+
+        private static void BaseDetails(Enemy enemy)
+        {
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("------------------------------------Base Details------------------------------------");
             EditorGUILayout.BeginHorizontal();
@@ -65,14 +107,30 @@ public class Enemy : MonoBehaviour
             enemy.speed = EditorGUILayout.FloatField(enemy.speed);
             EditorGUILayout.LabelField("Damage", GUILayout.MaxWidth(50));
             enemy.damage = EditorGUILayout.IntField(enemy.damage);
-            EditorGUILayout.EndHorizontal();           
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private static void MoneyDetails(Enemy enemy)
+        {
+            enemy.dropMoney = EditorGUILayout.Toggle("Enemy drop money", enemy.dropMoney);
+            if (enemy.dropMoney)
+            {
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Money droped", GUILayout.MaxWidth(235));
+                enemy.moneyDrop = EditorGUILayout.IntField(enemy.moneyDrop);
+                EditorGUILayout.EndHorizontal();
+            }
+        }
+
+        private static void MovmentDetails(Enemy enemy)
+        {
             enemy.fly = EditorGUILayout.Toggle("Enemy flies", enemy.fly);
             if (enemy.fly)
             {
                 enemy.flyIdleEnemy = (flyIdleMovments)EditorGUILayout.EnumPopup("Idle Movments", enemy.flyIdleEnemy);
-                if(enemy.flyIdleEnemy == flyIdleMovments.movesSideways)
+                if (enemy.flyIdleEnemy == flyIdleMovments.movesSideways)
                 {
-                    enemy.startsGoingRight = EditorGUILayout.Toggle("Starts Going Right", enemy.startsGoingRight);                    
+                    enemy.startsGoingRight = EditorGUILayout.Toggle("Starts Going Right", enemy.startsGoingRight);
                 }
                 if (enemy.flyIdleEnemy == flyIdleMovments.movesUpDown)
                 {
@@ -85,17 +143,13 @@ public class Enemy : MonoBehaviour
                 if (enemy.groundIdelEnemy == groundIdleMovments.movesSideways)
                 {
                     enemy.startsGoingRight = EditorGUILayout.Toggle("Starts Going Right", enemy.startsGoingRight);
+
                 }
             }
-            enemy.dropMoney = EditorGUILayout.Toggle("Enemy drop money", enemy.dropMoney);
-            if (enemy.dropMoney)
-            {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("Money droped", GUILayout.MaxWidth(235));
-                enemy.moneyDrop = EditorGUILayout.IntField(enemy.moneyDrop);
-                EditorGUILayout.EndHorizontal();
-            }
+        }
 
+        private static void BehaviorDetails(Enemy enemy)
+        {
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("------------------------------------Behavior Details------------------------------------");
             enemy.detectsPlayer = EditorGUILayout.Toggle("Detects Player", enemy.detectsPlayer);
@@ -122,7 +176,7 @@ public class Enemy : MonoBehaviour
                 if (enemy.chanceOfActivateOnDeath)
                 {
                     EditorGUILayout.LabelField("Percentage", GUILayout.MaxWidth(100));
-                    enemy.speed = EditorGUILayout.FloatField(enemy.activateChance);                 
+                    enemy.speed = EditorGUILayout.FloatField(enemy.activateChance);
                 }
                 EditorGUILayout.EndHorizontal();
 
