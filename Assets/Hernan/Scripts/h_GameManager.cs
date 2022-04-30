@@ -4,17 +4,45 @@ using UnityEngine;
 
 public class h_GameManager : MonoBehaviour
 {
-    [SerializeField] h_PlayerInteraction player;
+    [SerializeField] GameObject player;
     [SerializeField] h_UIManager uIManager;
+    [SerializeField] int chargedShootThornMaxAmount;
+
+    h_PlayerInteraction playerInteraction;
+    h_PlayerAttack playerAttack;
+
+    List<GameObject> listChargedShootThorn = new List<GameObject>();
 
     void Awake()
     {
-        player.imDie.AddListener(IfPlayerDie);
+        playerInteraction = player.GetComponent<h_PlayerInteraction>();
+        playerAttack = player.GetComponent<h_PlayerAttack>();
+
+        playerInteraction.imDie.AddListener(IfPlayerDie);
+        playerAttack.shootChargedThorn.AddListener(IfPlayerShootChargedThorn);
     }
 
     void IfPlayerDie(h_PlayerInteraction player)
     {
         Destroy(player.gameObject);
         uIManager.ShowYouDie();
+    }
+
+    void IfPlayerShootChargedThorn(GameObject thorn)
+    {
+        if (listChargedShootThorn.Count >= chargedShootThornMaxAmount)
+        {
+            GameObject obj = listChargedShootThorn[0];
+            listChargedShootThorn.Remove(obj);
+            Destroy(obj);
+        }
+        
+        listChargedShootThorn.Add(thorn);
+        thorn.GetComponent<h_ChargedThornBehaviour>().imDie.AddListener(IfChargedThornDie);
+    }
+
+    void IfChargedThornDie(GameObject thorn)
+    {
+        listChargedShootThorn.Remove(thorn);
     }
 }

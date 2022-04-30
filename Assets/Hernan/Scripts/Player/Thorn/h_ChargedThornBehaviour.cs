@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class h_ChargedThornBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] LayerMask floor_LayerMask;
+    [HideInInspector] public Ev_ChargedThorn imDie = new Ev_ChargedThorn();
 
     BoxCollider2D boxCollider2D;
     bool imMove = true;
@@ -44,7 +46,10 @@ public class h_ChargedThornBehaviour : MonoBehaviour
         {
             timeToDie += Time.deltaTime;
             if (timeToDie >= 4)
+            {
+                imDie.Invoke(this.gameObject);
                 Destroy(gameObject);
+            }
         }
     }
 }

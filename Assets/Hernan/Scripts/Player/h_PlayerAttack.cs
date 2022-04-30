@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum h_Direction
 {
@@ -10,6 +11,8 @@ public enum h_Direction
     Down
 }
 
+public class Ev_ChargedThorn : UnityEvent<GameObject> {}
+
 public class h_PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject simpleThorn;
@@ -17,6 +20,7 @@ public class h_PlayerAttack : MonoBehaviour
     [SerializeField] Transform mouseWorldPosition;
     [SerializeField] LayerMask enemy_LayerMask;
     public h_Direction meleeAttackDirection;
+    [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
 
     float delayRangeAttack = 0;
     float chargeRangeAttack = 0;
@@ -80,7 +84,7 @@ public class h_PlayerAttack : MonoBehaviour
                 }
                 else
                 {
-                    GenerateThorn(chargedThorn);
+                    shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
                 }
 
                 delayRangeAttack = 0;
@@ -89,7 +93,7 @@ public class h_PlayerAttack : MonoBehaviour
         }
     }
 
-    void GenerateThorn(GameObject thornType)
+    GameObject GenerateThorn(GameObject thornType)
     {
         Vector3 dir = mouseWorldPosition.position - transform.position;
         float angle = 0;
@@ -101,5 +105,6 @@ public class h_PlayerAttack : MonoBehaviour
 
         GameObject obj = Instantiate(thornType, transform.position, Quaternion.identity);
         obj.transform.rotation = Quaternion.Euler(0, 0, angle);
+        return obj;
     }
 }

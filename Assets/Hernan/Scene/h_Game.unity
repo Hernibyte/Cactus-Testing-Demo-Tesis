@@ -426,6 +426,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552418244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6010256834365874110, guid: d24736c6d6dccbf42af582cf2ec59e43,
+    type: 3}
+  m_PrefabInstance: {fileID: 6010256833232107068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &552418250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6010256834365874111, guid: d24736c6d6dccbf42af582cf2ec59e43,
@@ -561,18 +567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 552418250}
---- !u!114 &1150560649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6010256834365874101, guid: d24736c6d6dccbf42af582cf2ec59e43,
-    type: 3}
-  m_PrefabInstance: {fileID: 6010256833232107068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8fdbd61d1f14b241a9f3272bff59a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1227456083 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4736174436974614994, guid: f02852d908ac45c4fa92c0c81352dbbb,
@@ -913,12 +907,17 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1150560649}
+      objectReference: {fileID: 552418244}
     - target: {fileID: 4861015032552115875, guid: db04411ebb73a284996f125699e8c3cd,
         type: 3}
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 1227456083}
+    - target: {fileID: 4861015032552115875, guid: db04411ebb73a284996f125699e8c3cd,
+        type: 3}
+      propertyPath: chargedShootThornMaxAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db04411ebb73a284996f125699e8c3cd, type: 3}
 --- !u!1001 &5106935171109092306
