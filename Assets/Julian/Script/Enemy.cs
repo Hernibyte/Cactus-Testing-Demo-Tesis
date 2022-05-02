@@ -9,41 +9,41 @@ using UnityEditor;
 public class Enemy : MonoBehaviour
 {
     #region Variables
-    enum onDetect { chasesPlayer, flees, standsStill }
-    enum flyIdleMovments { standStill, movesSideways, movesUpDown, patroll, moveRandom }
-    enum groundIdleMovments { standStill, movesSideways, patroll, moveRandom }
-    enum attacksType { mele, shoot }
-    enum onDie { explode, generateOilPuddle }
-    onDetect enemyAction;
-    flyIdleMovments flyIdleEnemy;
-    groundIdleMovments groundIdelEnemy;
-    attacksType attackType;
-    onDie dieActions;
+    [SerializeField][HideInInspector]enum onDetect { chasesPlayer, flees, standsStill }
+    [SerializeField] [HideInInspector] enum flyIdleMovments { standStill, movesSideways, movesUpDown, patroll, moveRandom }
+    [SerializeField] [HideInInspector] enum groundIdleMovments { standStill, movesSideways, patroll, moveRandom }
+    [SerializeField] [HideInInspector] enum attacksType { mele, shoot }
+    [SerializeField] [HideInInspector] enum onDie { explode, generateOilPuddle }
+    [SerializeField] [HideInInspector] onDetect enemyAction;
+    [SerializeField] [HideInInspector] flyIdleMovments flyIdleEnemy;
+    [SerializeField] [HideInInspector] groundIdleMovments groundIdelEnemy;
+    [SerializeField] [HideInInspector] attacksType attackType;
+    [SerializeField] [HideInInspector] onDie dieActions;
 
-    int health;
-    int damage;
-    int moneyDrop;
-    float speed;
-    float detectionRadio;
-    float activateChance;
-    float timer;
-    bool chanceOfActivateOnDeath;
-    bool detectsPlayer;
-    bool fly;
-    bool onEnemyDeath;
-    bool attack;
-    bool dropMoney;
-    bool startsGoingRight;
-    bool startsGoingUp;
+    [SerializeField] [HideInInspector] int health;
+    [SerializeField] [HideInInspector] int damage;
+    [SerializeField] [HideInInspector] int moneyDrop;
+    [SerializeField] [HideInInspector] float speed;
+    [SerializeField] [HideInInspector] float detectionRadio;
+    [SerializeField] [HideInInspector] float activateChance;
+    [SerializeField] [HideInInspector] float timer;
+    [SerializeField] [HideInInspector] bool chanceOfActivateOnDeath;
+    [SerializeField] [HideInInspector] bool detectsPlayer;
+    [SerializeField] [HideInInspector] bool fly;
+    [SerializeField] [HideInInspector] bool onEnemyDeath;
+    [SerializeField] [HideInInspector] bool attack;
+    [SerializeField] [HideInInspector] bool dropMoney;
+    [SerializeField] [HideInInspector] bool startsGoingRight;
+    [SerializeField] [HideInInspector] bool startsGoingUp;
 
-    Vector2 randomGroundPatrol;
-    Vector2 randomFlyDirMax;
-    Vector2 randomFlyDirMin;
+    [SerializeField] [HideInInspector] Vector2 randomGroundPatrol;
+    [SerializeField] [HideInInspector] Vector2 randomFlyDirMax;
+    [SerializeField] [HideInInspector] Vector2 randomFlyDirMin;
 
     [SerializeField] Transform groundDetection;
-    RaycastHit2D groundDetector;
-    Vector3 rightEulerAngle = new Vector3(0, -180, 0);
-    Vector3 leftEulerAngle = new Vector3(0, -180, 0);
+    [SerializeField] [HideInInspector] RaycastHit2D groundDetector;
+    [SerializeField] [HideInInspector] Vector3 rightEulerAngle = new Vector3(0, -180, 0);
+    [SerializeField] [HideInInspector] Vector3 leftEulerAngle = new Vector3(0, -180, 0);
     #endregion
     void Start()
     {
@@ -86,7 +86,8 @@ public class Enemy : MonoBehaviour
         {
             base.OnInspectorGUI();
 
-            Enemy enemy = (Enemy)target;
+            var enemy = (Enemy)target;
+            if (enemy == null) return;
             EditorUtility.SetDirty(target);
             //EditorUtility.SetDirty(enemy);
             BaseDetails(enemy);
