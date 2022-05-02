@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Define el movimiento del jugador
@@ -11,6 +12,8 @@ public class h_PlayerMovement : MonoBehaviour
     [SerializeField] AnimationCurve curve;
     [SerializeField] AnimationCurve downCurve;
     [SerializeField] float gravity = 3.5f;
+    [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
+    [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
 
     h_PlayerAttack playerAttack;
     h_PlayerStats stats;
@@ -60,9 +63,15 @@ public class h_PlayerMovement : MonoBehaviour
                 x = 0;
 
         if (x > 0)
+        {
             playerAttack.meleeAttackDirection = h_Direction.Right;
+            lookRight_Event.Invoke();
+        }
         else if (x < 0)
+        {
             playerAttack.meleeAttackDirection = h_Direction.Left;
+            lookLeft_Event.Invoke();
+        }
 
         Vector3 newPos = new Vector3(x, 0, 0);
         //rb2D.AddForce(newPos, ForceMode2D.Impulse);
