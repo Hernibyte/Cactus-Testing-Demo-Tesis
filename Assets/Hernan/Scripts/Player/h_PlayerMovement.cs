@@ -33,8 +33,13 @@ public class h_PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
         Jump();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+
     }
 
     void OnDrawGizmos()
@@ -53,7 +58,7 @@ public class h_PlayerMovement : MonoBehaviour
         Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
         Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
 
-        float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
+        float x = Input.GetAxis("Horizontal") * stats.movementSpeed;
 
         if (coll1)
             if (x < 0)
@@ -75,7 +80,8 @@ public class h_PlayerMovement : MonoBehaviour
 
         Vector3 newPos = new Vector3(x, 0, 0);
         //rb2D.AddForce(newPos, ForceMode2D.Impulse);
-        transform.position += newPos;
+        rb2D.velocity = new Vector2(x, rb2D.velocity.y);
+        //transform.position += newPos;
     }
 
     /// <summary>
