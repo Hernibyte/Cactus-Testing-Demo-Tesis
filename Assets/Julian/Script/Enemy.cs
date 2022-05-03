@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] [HideInInspector] float timer;
     [SerializeField] [HideInInspector] bool chanceOfActivateOnDeath;
     [SerializeField] [HideInInspector] bool detectsPlayer;
+    [SerializeField] [HideInInspector] bool playerDetected;
     [SerializeField] [HideInInspector] bool fly;
     [SerializeField] [HideInInspector] bool onEnemyDeath;
     [SerializeField] [HideInInspector] bool attack;
@@ -41,39 +43,88 @@ public class Enemy : MonoBehaviour
     [SerializeField] [HideInInspector] Vector2 randomFlyDirMin;
 
     [SerializeField] Transform groundDetection;
+    [SerializeField] Transform wallDetection;
     [SerializeField] [HideInInspector] RaycastHit2D groundDetector;
-    [SerializeField] [HideInInspector] Vector3 rightEulerAngle = new Vector3(0, -180, 0);
-    [SerializeField] [HideInInspector] Vector3 leftEulerAngle = new Vector3(0, -180, 0);
+    [SerializeField] [HideInInspector] RaycastHit2D wallDetector;
+    Vector3 rightEulerAngle = new Vector3(0, -180, 0);
+    Vector3 leftEulerAngle = new Vector3(0, 0, 0);
     #endregion
     void Start()
     {
-        
+        if (startsGoingRight)
+        {
+            transform.eulerAngles = rightEulerAngle;
+        }
     }
 
     void Update()
     {
-
-        groundDetector = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
-        if (groundDetector.collider == false) 
-        { 
-            startsGoingRight = !startsGoingRight; 
-            if (transform.eulerAngles == rightEulerAngle) 
+        if (!playerDetected) //idle
+        {
+            if ((fly == false && groundIdelEnemy == groundIdleMovments.movesSideways))
             {
-                transform.eulerAngles = leftEulerAngle; 
-            } 
-            else 
-            {
-                transform.eulerAngles = rightEulerAngle;
+                GroundMovingSideways();
             }
-        };
-        
+            if ((fly == true && flyIdleEnemy == flyIdleMovments.movesSideways))
+            {
+                FlyMovingSideways();
+            }
+        }
+        else
+        {
+        }
+    }
+
+    private void FlyMovingSideways()
+    {
+        wallDetector = Physics2D.Raycast(wallDetection.position, Vector2.left, 0.5f);
+        if (wallDetector.collider == true)
+        {
+            if (wallDetector.collider.gameObject.tag == "Ground")
+            {
+                startsGoingRight = !startsGoingRight;
+            }
+        }
         if (startsGoingRight)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            //   wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.5f);
+            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.eulerAngles = rightEulerAngle;
         }
-        else 
-        { 
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        else
+        {
+            //    wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.left, 0.5f);
+            transform.position += (Vector3.left * speed * Time.deltaTime);
+            transform.eulerAngles = leftEulerAngle;
+        }
+    }
+
+    private void GroundMovingSideways()
+    {
+        groundDetector = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
+        wallDetector = Physics2D.Raycast(wallDetection.position, Vector2.left, 0.5f);
+        if (wallDetector.collider == true)
+            {
+            if (wallDetector.collider.gameObject.tag == "Ground")
+            {
+                startsGoingRight = !startsGoingRight;
+            }
+        }
+        if (groundDetector.collider == false)
+        {
+            startsGoingRight = !startsGoingRight;
+        }
+        if (startsGoingRight)
+        {
+        //   wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.5f);
+            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.eulerAngles = rightEulerAngle;
+        }
+        else
+        {
+        //    wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.left, 0.5f);
+            transform.position += (Vector3.left * speed * Time.deltaTime);
+            transform.eulerAngles = leftEulerAngle;
         }
     }
 
