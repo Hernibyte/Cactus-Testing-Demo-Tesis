@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Hernan/Scene/h_Game.unity
     guid: c025a6bee4f6cd74cb35109eed4c7d41
-  - enabled: 1
+  - enabled: 0
     path: Assets/Hernan/Scene/h_Menu.unity
     guid: 510b0446e9991414789b4413fadc0a4a
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: f599376ee4f8d7945b94bb3663bab096
   m_configObjects: {}

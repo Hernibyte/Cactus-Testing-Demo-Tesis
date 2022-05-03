@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] [HideInInspector] groundIdleMovments groundIdelEnemy;
     [SerializeField] [HideInInspector] attacksType attackType;
     [SerializeField] [HideInInspector] onDie dieActions;
-
+    [SerializeField] [HideInInspector] GameObject target;
     [SerializeField] [HideInInspector] int health;
     [SerializeField] [HideInInspector] int damage;
     [SerializeField] [HideInInspector] int moneyDrop;
@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] [HideInInspector] float detectionRadio;
     [SerializeField] [HideInInspector] float activateChance;
     [SerializeField] [HideInInspector] float timer;
+    [SerializeField] [HideInInspector] float visionRange;
+    [SerializeField] [HideInInspector] float attackRange;
     [SerializeField] [HideInInspector] bool chanceOfActivateOnDeath;
     [SerializeField] [HideInInspector] bool detectsPlayer;
     [SerializeField] [HideInInspector] bool playerDetected;
