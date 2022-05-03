@@ -19,7 +19,7 @@ public class h_EnemyBehaviour : MonoBehaviour, IHitable
         }
     }
 
-    public void Hited(float damage)
+    public void Hited(int damage)
     {
         imDie.Invoke(this);
     }

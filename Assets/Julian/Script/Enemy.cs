@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHitable
 {
     #region Variables
     [SerializeField][HideInInspector]enum onDetect { chasesPlayer, flees, standsStill }
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] [HideInInspector] RaycastHit2D wallDetector;
     Vector3 rightEulerAngle = new Vector3(0, -180, 0);
     Vector3 leftEulerAngle = new Vector3(0, 0, 0);
+    [HideInInspector] public CustomEvents.E_Enemy imDie = new CustomEvents.E_Enemy();
     #endregion
     void Start()
     {
@@ -73,6 +75,13 @@ public class Enemy : MonoBehaviour
         else
         {
         }
+    }
+
+    public void Hited(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            imDie.Invoke(this);
     }
 
     private void FlyMovingSideways()

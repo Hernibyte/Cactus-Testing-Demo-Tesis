@@ -25,6 +25,12 @@ public class h_PlayerAttack : MonoBehaviour
     float delayRangeAttack = 0;
     float chargeRangeAttack = 0;
     Vector2 meleeAttackPosition = new Vector2();
+    h_PlayerStats stats;
+
+    void Awake()
+    {
+        stats = GetComponent<h_PlayerStats>();
+    }
 
     void Update()
     {
@@ -58,7 +64,7 @@ public class h_PlayerAttack : MonoBehaviour
             if (coll)
             {
                 IHitable hitable = coll.GetComponent<IHitable>();
-                hitable.Hited(0);
+                hitable.Hited(stats.damage);
             }
         }
     }

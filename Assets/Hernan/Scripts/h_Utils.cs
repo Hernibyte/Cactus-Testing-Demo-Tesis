@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class h_Utils
 {
@@ -18,5 +19,10 @@ public class h_Utils
 
 interface IHitable
 {
-    void Hited(float damage);
+    void Hited(int damage);
+}
+
+namespace CustomEvents
+{
+    public class E_Enemy : UnityEvent<Enemy> {}
 }

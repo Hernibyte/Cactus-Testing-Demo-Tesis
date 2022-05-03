@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class h_ThornBehaviour : MonoBehaviour
 {
+    [SerializeField] int damage;
     [SerializeField] float speed;
     [SerializeField] LayerMask floor_LayerMask;
     [SerializeField] LayerMask enemy_LayerMask;
@@ -25,7 +26,7 @@ public class h_ThornBehaviour : MonoBehaviour
         if (h_Utils.LayerMaskContains(enemy_LayerMask, other.gameObject.layer))
         {
             IHitable hitable = other.GetComponent<IHitable>();
-            hitable.Hited(0);
+            hitable.Hited(damage);
             Destroy(gameObject);
         }
     }

@@ -9,7 +9,7 @@ public class h_PlayerInteraction : MonoBehaviour, IHitable
 {
     public h_PlayerInteractionEvent imDie = new h_PlayerInteractionEvent();
 
-    public void Hited(float damage)
+    public void Hited(int damage)
     {
         imDie.Invoke(this);
     }

@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class h_EnemyManager : MonoBehaviour
 {
-    [SerializeField] List<h_EnemyBehaviour> enemyList;
+    [SerializeField] List<Enemy> enemyList;
     [SerializeField] h_UIManager uIManager;
     int enemyAmount;
 
     void Awake()
     {
-        foreach (h_EnemyBehaviour enemy in enemyList)
+        foreach (Enemy enemy in enemyList)
         {
             enemy.imDie.AddListener(DiscountEnemyAmount);
         }
         enemyAmount = enemyList.Count;
     }
 
-    void DiscountEnemyAmount(h_EnemyBehaviour enemyBehaviour)
+    void DiscountEnemyAmount(Enemy enemy)
     {
         enemyAmount--;
         if (enemyAmount <= 0)
         {
             uIManager.ShowYouWin();
         }
-        enemyList.Remove(enemyBehaviour);
-        Destroy(enemyBehaviour.gameObject);
+        enemyList.Remove(enemy);
+        Destroy(enemy.gameObject);
     }
 }

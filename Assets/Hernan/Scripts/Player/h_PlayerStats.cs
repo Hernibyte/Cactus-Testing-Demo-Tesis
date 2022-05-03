@@ -12,4 +12,5 @@ public class h_PlayerStats : MonoBehaviour
     /// Define la fuerza de salto del jugador
     /// </summary>
     public float jumpForce;
+    public int damage;
 }
