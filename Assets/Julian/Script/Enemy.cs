@@ -116,25 +116,35 @@ public class Enemy : MonoBehaviour, IHitable
             {
             if (wallDetector.collider.gameObject.tag == "Ground")
             {
+                Flip();
                 startsGoingRight = !startsGoingRight;
+                
             }
         }
         if (groundDetector.collider == false)
         {
+            Flip();
             startsGoingRight = !startsGoingRight;
+            
+
         }
         if (startsGoingRight)
         {
-        //   wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.5f);
             transform.position += Vector3.right * speed * Time.deltaTime;
-            transform.eulerAngles = rightEulerAngle;
         }
         else
         {
-        //    wallDetector = Physics2D.Raycast(groundDetection.position, Vector2.left, 0.5f);
             transform.position += (Vector3.left * speed * Time.deltaTime);
+        }
+    }
+
+    private void Flip()
+    {
+        if (startsGoingRight)
+        {
             transform.eulerAngles = leftEulerAngle;
         }
+        else { transform.eulerAngles = rightEulerAngle; }
     }
 
     #region EnemyInspectorEditor
