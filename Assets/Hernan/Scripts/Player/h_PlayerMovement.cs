@@ -16,8 +16,8 @@ public class h_PlayerMovement : MonoBehaviour
     h_PlayerAttack playerAttack;
     h_PlayerStats stats;
     Rigidbody2D rb2D;
-    bool isGrounded;
-    bool isJumping;
+    public bool isGrounded;
+    public bool isJumping;
     float timer;
 
     void Awake()
@@ -39,8 +39,8 @@ public class h_PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(5, 1));
-        Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(5, 1));
+        Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(4.8f, 0.5f));
+        Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(4.8f, 0.5f));
         Gizmos.DrawCube(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f));
         Gizmos.DrawCube(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f));
     }
@@ -81,14 +81,11 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(0, -5.45f, 0), new Vector2(5, 1), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(0, 3.54f, 0), new Vector2(5, 1), 0, floorLayerMask);
+        Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(0, -5.45f, 0), new Vector2(4.8f, 0.5f), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(0, 3.54f, 0), new Vector2(4.8f, 0.5f), 0, floorLayerMask);
 
         if (coll)
-        {
-            timer = 0;
             isGrounded = true;
-        }
         else
             isGrounded = false;
 

@@ -816,6 +816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 937612339443950439, guid: 7979c1d4f945941448b3ce4e3df01257,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7979c1d4f945941448b3ce4e3df01257, type: 3}
 --- !u!114 &445166380 stripped
@@ -1034,7 +1039,7 @@ PrefabInstance:
     - target: {fileID: 937612339443950436, guid: 7979c1d4f945941448b3ce4e3df01257,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 937612339443950436, guid: 7979c1d4f945941448b3ce4e3df01257,
         type: 3}
@@ -1095,6 +1100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 937612339443950439, guid: 7979c1d4f945941448b3ce4e3df01257,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7979c1d4f945941448b3ce4e3df01257, type: 3}
@@ -1427,6 +1437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 937612339443950439, guid: 7979c1d4f945941448b3ce4e3df01257,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7979c1d4f945941448b3ce4e3df01257, type: 3}
@@ -2017,7 +2032,7 @@ Transform:
   m_LocalScale: {x: 20.204, y: 20.204, z: 20.204}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368817417
 GameObject:
@@ -3325,7 +3340,7 @@ PrefabInstance:
     - target: {fileID: 6010256834365874105, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}
       propertyPath: jumpForce
-      value: 230
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 6010256834365874105, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}
