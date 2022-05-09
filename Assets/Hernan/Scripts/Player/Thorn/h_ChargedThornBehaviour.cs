@@ -10,12 +10,14 @@ public class h_ChargedThornBehaviour : MonoBehaviour
     [HideInInspector] public Ev_ChargedThorn imDie = new Ev_ChargedThorn();
 
     BoxCollider2D boxCollider2D;
+    Rigidbody2D rb2D;
     bool imMove = true;
     float timeToDie = 0;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -31,6 +33,23 @@ public class h_ChargedThornBehaviour : MonoBehaviour
             imMove = false;
             gameObject.layer = 8;
             boxCollider2D.isTrigger = false;
+
+            float x = transform.position.x - other.ClosestPoint(transform.position).x;
+            float y = transform.position.y - other.ClosestPoint(transform.position).y;
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                transform.position = new Vector3(transform.position.x, other.ClosestPoint(transform.position).y);
+                transform.rotation = Quaternion.identity;
+            }
+            else
+            {
+                transform.position = new Vector3(other.ClosestPoint(transform.position).x, transform.position.y);
+                if (y < 0)
+                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                else
+                    transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
         }
     }
 

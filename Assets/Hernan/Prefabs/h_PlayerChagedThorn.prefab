@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6729992191471375811}
   - component: {fileID: 6729992191471375812}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6729992192639653171}
   - component: {fileID: 6729992192639653170}
   - component: {fileID: 6729992192639653169}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: h_PlayerChagedThorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 6729992192639653183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 10, z: 1}
+  m_LocalScale: {x: 35, y: 15, z: 1}
   m_Children:
   - {fileID: 6729992191471375811}
   m_Father: {fileID: 0}
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
