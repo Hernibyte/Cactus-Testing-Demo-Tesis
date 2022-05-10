@@ -19,6 +19,7 @@ public class h_PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isJumping;
     float timer;
+    float slowdownValue;
 
     void Awake()
     {
@@ -73,7 +74,7 @@ public class h_PlayerMovement : MonoBehaviour
             lookLeft_Event.Invoke();
         }
 
-        rb2D.velocity = new Vector2(x, rb2D.velocity.y);
+        rb2D.velocity = new Vector2(x + slowdownValue, rb2D.velocity.y);
     }
 
     /// <summary>
@@ -115,5 +116,15 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (coll2)
             isJumping = false;
+    }
+
+    public void ApplySlowdown(float value)
+    {
+        slowdownValue = value;
+    }
+
+    public void DeleteSlowdown()
+    {
+        slowdownValue = 0;
     }
 }
