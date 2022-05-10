@@ -13,9 +13,13 @@ public class h_PlayerMovement : MonoBehaviour
     [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
 
+    Vector2[] checkersPositions = new Vector2[4];
+    Vector2[] checkersSize = new Vector2[4];
+
     //h_PlayerAttack playerAttack;
     h_PlayerStats stats;
     Rigidbody2D rb2D;
+    BoxCollider2D boxCollider2D;
     bool isGrounded;
     bool isJumping;
     float timer;
@@ -26,6 +30,12 @@ public class h_PlayerMovement : MonoBehaviour
         //playerAttack = GetComponent<h_PlayerAttack>();
         stats = GetComponent<h_PlayerStats>();
         rb2D = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+    }
+
+    void Start()
+    {
+        SetCheckersValue();
     }
 
     void Update()
@@ -40,10 +50,14 @@ public class h_PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(4.8f, 0.5f));
-        Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(4.8f, 0.5f));
-        Gizmos.DrawCube(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f));
-        Gizmos.DrawCube(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f));
+        //Gizmos.DrawCube(transform.position + new Vector3(0, -5.45f, 0), new Vector2(4.8f, 0.5f));
+        //Gizmos.DrawCube(transform.position + new Vector3(0, 3.54f, 0), new Vector2(4.8f, 0.5f));
+        //Gizmos.DrawCube(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f));
+        //Gizmos.DrawCube(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f));
+        Gizmos.DrawCube(transform.position + new Vector3(checkersPositions[0].x, checkersPositions[0].y), checkersSize[0]);
+        Gizmos.DrawCube(transform.position + new Vector3(checkersPositions[1].x, checkersPositions[1].y), checkersSize[1]);
+        Gizmos.DrawCube(transform.position + new Vector3(checkersPositions[2].x, checkersPositions[2].y), checkersSize[2]);
+        Gizmos.DrawCube(transform.position + new Vector3(checkersPositions[3].x, checkersPositions[3].y), checkersSize[3]);
     }
 
     /// <summary>
@@ -51,8 +65,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
-        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(-2.4f, -1f, 0), new Vector2(1, 8.8f), 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[3].x, checkersPositions[3].y), checkersSize[3], 0, floorLayerMask);
+        Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[2].x, checkersPositions[2].y), checkersSize[2], 0, floorLayerMask);
 
         float x = Input.GetAxis("Horizontal") * stats.movementSpeed;
 
@@ -82,8 +96,8 @@ public class h_PlayerMovement : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(0, -5.45f, 0), new Vector2(4.8f, 0.5f), 0, floorLayerMask);
-        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(0, 3.54f, 0), new Vector2(4.8f, 0.5f), 0, floorLayerMask);
+        Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[0].x, checkersPositions[0].y), checkersSize[0], 0, floorLayerMask);
+        Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[1].x, checkersPositions[1].y), checkersSize[1], 0, floorLayerMask);
 
         if (coll)
             isGrounded = true;
@@ -116,6 +130,43 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (coll2)
             isJumping = false;
+    }
+
+    void SetCheckersValue()
+    {
+        checkersPositions[0] = new Vector2(
+            transform.position.x, 
+            transform.position.y + boxCollider2D.offset.y - (boxCollider2D.size.y / 2)
+        );
+        checkersPositions[1] = new Vector2(
+            transform.position.x,
+            transform.position.y + boxCollider2D.offset.y + (boxCollider2D.size.y / 2)
+        );
+        checkersPositions[2] = new Vector2(
+            transform.position.x + boxCollider2D.offset.x - (boxCollider2D.size.x / 2),
+            transform.position.y + boxCollider2D.offset.y
+        );
+        checkersPositions[3] = new Vector2(
+            transform.position.x + boxCollider2D.offset.x + (boxCollider2D.size.x / 2),
+            transform.position.y + boxCollider2D.offset.y
+        );
+
+        checkersSize[0] = new Vector2(
+            boxCollider2D.size.x - 0.2f,
+            0.5f
+        );
+        checkersSize[1] = new Vector2(
+            boxCollider2D.size.x - 0.2f,
+            0.5f
+        );
+        checkersSize[2] = new Vector2(
+            1,
+            boxCollider2D.size.y - 0.2f
+        );
+        checkersSize[3] = new Vector2(
+            1,
+            boxCollider2D.size.y - 0.2f
+        );
     }
 
     public void ApplySlowdown(float value)
