@@ -13,7 +13,7 @@ public class h_PlayerMovement : MonoBehaviour
     [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
 
-    h_PlayerAttack playerAttack;
+    //h_PlayerAttack playerAttack;
     h_PlayerStats stats;
     Rigidbody2D rb2D;
     bool isGrounded;
@@ -22,7 +22,7 @@ public class h_PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        playerAttack = GetComponent<h_PlayerAttack>();
+        //playerAttack = GetComponent<h_PlayerAttack>();
         stats = GetComponent<h_PlayerStats>();
         rb2D = GetComponent<Rigidbody2D>();
     }
@@ -64,12 +64,12 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (x > 0)
         {
-            playerAttack.meleeAttackDirection = h_Direction.Right;
+            //playerAttack.meleeAttackDirection = h_Direction.Right;
             lookRight_Event.Invoke();
         }
         else if (x < 0)
         {
-            playerAttack.meleeAttackDirection = h_Direction.Left;
+            //playerAttack.meleeAttackDirection = h_Direction.Left;
             lookLeft_Event.Invoke();
         }
 
