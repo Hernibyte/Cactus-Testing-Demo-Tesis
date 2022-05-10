@@ -16,8 +16,8 @@ public class h_PlayerMovement : MonoBehaviour
     h_PlayerAttack playerAttack;
     h_PlayerStats stats;
     Rigidbody2D rb2D;
-    public bool isGrounded;
-    public bool isJumping;
+    bool isGrounded;
+    bool isJumping;
     float timer;
 
     void Awake()
@@ -99,7 +99,7 @@ public class h_PlayerMovement : MonoBehaviour
         {
             rb2D.velocity += new Vector2(0, curve.Evaluate(timer) * stats.jumpForce * Time.deltaTime);
             timer += Time.deltaTime;
-            if (timer >= 0.6f)
+            if (timer >= 0.4f)
             {
                 rb2D.velocity = new Vector2(0, 0);
                 isJumping = false;
