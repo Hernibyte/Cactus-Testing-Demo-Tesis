@@ -20,8 +20,9 @@ public class h_PlayerAttack : MonoBehaviour
     [SerializeField] Transform mouseWorldPosition;
     [SerializeField] LayerMask enemy_LayerMask;
     //public h_Direction meleeAttackDirection;
+    [SerializeField] float timeToNormalShoot;
+    [SerializeField] float timeToChargedShoot;
     [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
-
     float delayNormalRangeAttack = 0;
     bool normalRangeAttackAvailable = false;
     float delayChargedRangeAttack = 0;
@@ -73,12 +74,12 @@ public class h_PlayerAttack : MonoBehaviour
 
     void RangeAttack()
     {
-        if (delayNormalRangeAttack <= 0.55f)
+        if (delayNormalRangeAttack <= timeToNormalShoot)
             delayNormalRangeAttack += Time.deltaTime;
         else
             normalRangeAttackAvailable = true;
 
-        if (delayChargedRangeAttack <= 1f)
+        if (delayChargedRangeAttack <= timeToChargedShoot)
             delayChargedRangeAttack += Time.deltaTime;
         else
             chagedRangeAttackAvailable = true;

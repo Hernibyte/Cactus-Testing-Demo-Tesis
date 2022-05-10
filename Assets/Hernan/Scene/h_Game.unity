@@ -3264,9 +3264,19 @@ PrefabInstance:
       objectReference: {fileID: 552418247}
     - target: {fileID: 6010256834365874100, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}
+      propertyPath: timeToNormalShoot
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010256834365874100, guid: d24736c6d6dccbf42af582cf2ec59e43,
+        type: 3}
       propertyPath: mouseWorldPosition
       value: 
       objectReference: {fileID: 305875520}
+    - target: {fileID: 6010256834365874100, guid: d24736c6d6dccbf42af582cf2ec59e43,
+        type: 3}
+      propertyPath: timeToChargedShoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6010256834365874104, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}
       propertyPath: curve.m_Curve.Array.data[0].time
