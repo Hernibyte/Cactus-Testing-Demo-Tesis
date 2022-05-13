@@ -3232,7 +3232,7 @@ PrefabInstance:
     - target: {fileID: 4861015032552115872, guid: db04411ebb73a284996f125699e8c3cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861015032552115872, guid: db04411ebb73a284996f125699e8c3cd,
         type: 3}
@@ -3327,6 +3327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: timeToChargedShoot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010256834365874104, guid: d24736c6d6dccbf42af582cf2ec59e43,
+        type: 3}
+      propertyPath: coyoteTime
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6010256834365874104, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}

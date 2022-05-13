@@ -10,6 +10,7 @@ public class h_PlayerMovement : MonoBehaviour
 {
     [SerializeField] LayerMask floorLayerMask;
     [SerializeField] AnimationCurve curve;
+    [SerializeField] float coyoteTime;
     [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
 
@@ -24,6 +25,7 @@ public class h_PlayerMovement : MonoBehaviour
     bool isJumping;
     float timer;
     float slowdownValue;
+    float coyoteTimer;
 
     void Awake()
     {
@@ -101,13 +103,22 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (coll)
             isGrounded = true;
-        else
-            isGrounded = false;
+        else if (isGrounded)
+        {
+            coyoteTimer += Time.deltaTime;
+            if (coyoteTimer >= coyoteTime)
+            {
+                coyoteTimer = 0;
+                isGrounded = false;
+            }
+        }
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            isGrounded = false;
             isJumping = true;
             timer = 0;
+            coyoteTimer = 0;
         }
 
         if (isJumping && Input.GetKey(KeyCode.Space))
