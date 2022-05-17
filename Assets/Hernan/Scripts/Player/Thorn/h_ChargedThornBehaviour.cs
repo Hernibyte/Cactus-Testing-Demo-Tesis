@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class h_ChargedThornBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float lifeTime = 4;
     [SerializeField] LayerMask floor_LayerMask;
     [HideInInspector] public Ev_ChargedThorn imDie = new Ev_ChargedThorn();
 
@@ -64,7 +65,7 @@ public class h_ChargedThornBehaviour : MonoBehaviour
         if (!imMove)
         {
             timeToDie += Time.deltaTime;
-            if (timeToDie >= 4)
+            if (timeToDie >= lifeTime)
             {
                 imDie.Invoke(this.gameObject);
                 Destroy(gameObject);

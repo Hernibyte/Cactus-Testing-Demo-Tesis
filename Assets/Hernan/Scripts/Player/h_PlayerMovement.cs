@@ -26,6 +26,9 @@ public class h_PlayerMovement : MonoBehaviour
     float timer;
     float slowdownValue;
     float coyoteTimer;
+    bool impulseActivated;
+    Vector2 movementImpulse;
+    float timeToImpulse;
 
     void Awake()
     {
@@ -42,6 +45,7 @@ public class h_PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        CalculateImpulse();
         Jump();
     }
 
@@ -90,7 +94,16 @@ public class h_PlayerMovement : MonoBehaviour
             lookLeft_Event.Invoke();
         }
 
-        rb2D.velocity = new Vector2(x + slowdownValue, rb2D.velocity.y);
+        if (!impulseActivated)
+            rb2D.velocity = new Vector2(
+                x + slowdownValue, 
+                rb2D.velocity.y
+            );
+        else
+            rb2D.velocity = new Vector2(
+                movementImpulse.x,
+                rb2D.velocity.y + movementImpulse.y
+            );
     }
 
     /// <summary>
@@ -180,9 +193,30 @@ public class h_PlayerMovement : MonoBehaviour
         );
     }
 
+    void CalculateImpulse()
+    {
+        if (impulseActivated)
+        {
+            timeToImpulse -= Time.deltaTime;
+            if (timeToImpulse <= 0)
+            {
+                movementImpulse = new Vector2(0, 0);
+                impulseActivated = false;
+            }
+        }
+    }
+
     public void ApplySlowdown(float value)
     {
         slowdownValue = value;
+    }
+
+    public void ApplyImpulse(float x, float y, float time)
+    {
+        impulseActivated = true;
+        movementImpulse.x = x;
+        movementImpulse.y = y;
+        timeToImpulse = time;
     }
 
     public void DeleteSlowdown()

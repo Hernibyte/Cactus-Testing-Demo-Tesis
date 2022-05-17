@@ -26,4 +26,5 @@ namespace CustomEvents
 {
     public class E_Enemy : UnityEvent<Enemy> {}
     public class E_WindStart : UnityEvent<float> {}
+    public class E_FlowerThorn : UnityEvent<GameObject> {}
 }

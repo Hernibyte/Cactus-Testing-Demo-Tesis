@@ -3291,6 +3291,11 @@ PrefabInstance:
       objectReference: {fileID: 1227456083}
     - target: {fileID: 4861015032552115875, guid: db04411ebb73a284996f125699e8c3cd,
         type: 3}
+      propertyPath: flowerShootThornMaxAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861015032552115875, guid: db04411ebb73a284996f125699e8c3cd,
+        type: 3}
       propertyPath: chargedShootThornMaxAmount
       value: 1
       objectReference: {fileID: 0}
@@ -3313,6 +3318,12 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 552418247}
+    - target: {fileID: 6010256834365874100, guid: d24736c6d6dccbf42af582cf2ec59e43,
+        type: 3}
+      propertyPath: flowerThorn
+      value: 
+      objectReference: {fileID: 6687209719147107870, guid: 7bb2dde0112517e44b82776ba773466f,
+        type: 3}
     - target: {fileID: 6010256834365874100, guid: d24736c6d6dccbf42af582cf2ec59e43,
         type: 3}
       propertyPath: timeToNormalShoot

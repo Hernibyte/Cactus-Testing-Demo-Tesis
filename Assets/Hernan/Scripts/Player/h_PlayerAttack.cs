@@ -11,24 +11,33 @@ public enum h_Direction
     Down
 }
 
+public enum SpecialShootType
+{
+    ChargedShoot,
+    FlowerShoot
+}
+
 public class Ev_ChargedThorn : UnityEvent<GameObject> {}
 
 public class h_PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject simpleThorn;
     [SerializeField] GameObject chargedThorn;
+    [SerializeField] GameObject flowerThorn;
     [SerializeField] Transform mouseWorldPosition;
     [SerializeField] LayerMask enemy_LayerMask;
     //public h_Direction meleeAttackDirection;
     [SerializeField] float timeToNormalShoot;
     [SerializeField] float timeToChargedShoot;
     [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
+    [HideInInspector] public CustomEvents.E_FlowerThorn shootFlowerThorn = new CustomEvents.E_FlowerThorn();
     float delayNormalRangeAttack = 0;
     bool normalRangeAttackAvailable = false;
     float delayChargedRangeAttack = 0;
     bool chagedRangeAttackAvailable = false;
     //Vector2 meleeAttackPosition = new Vector2();
     h_PlayerStats stats;
+    SpecialShootType shootType;
 
     void Awake()
     {
@@ -39,6 +48,19 @@ public class h_PlayerAttack : MonoBehaviour
     {
         //MeleeAttack();
         RangeAttack();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            switch(shootType)
+            {
+                case SpecialShootType.ChargedShoot:
+                    shootType = SpecialShootType.FlowerShoot;
+                    break;
+                case SpecialShootType.FlowerShoot:
+                    shootType = SpecialShootType.ChargedShoot;
+                    break;
+            }
+        }
     }
 
     void OnDrawGizmos()
@@ -86,7 +108,15 @@ public class h_PlayerAttack : MonoBehaviour
 
         if (chagedRangeAttackAvailable && Input.GetKey(KeyCode.Mouse1))
         {
-            shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
+            switch(shootType)
+            {
+                case SpecialShootType.ChargedShoot:
+                    shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
+                    break;
+                case SpecialShootType.FlowerShoot:
+                    shootFlowerThorn.Invoke(GenerateThorn(flowerThorn));
+                    break;
+            }
             chagedRangeAttackAvailable = false;
             delayChargedRangeAttack = 0f;
         }

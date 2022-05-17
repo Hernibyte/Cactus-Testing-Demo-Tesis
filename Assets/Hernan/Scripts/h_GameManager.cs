@@ -7,11 +7,13 @@ public class h_GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] h_UIManager uIManager;
     [SerializeField] int chargedShootThornMaxAmount;
+    [SerializeField] int flowerShootThornMaxAmount;
 
     h_PlayerInteraction playerInteraction;
     h_PlayerAttack playerAttack;
 
     List<GameObject> listChargedShootThorn = new List<GameObject>();
+    List<GameObject> listOfFlowerShootThorn = new List<GameObject>();
 
     void Awake()
     {
@@ -20,6 +22,7 @@ public class h_GameManager : MonoBehaviour
 
         playerInteraction.imDie.AddListener(IfPlayerDie);
         playerAttack.shootChargedThorn.AddListener(IfPlayerShootChargedThorn);
+        playerAttack.shootFlowerThorn.AddListener(IfPlayerShootFlowerThorn);
     }
 
     void IfPlayerDie(h_PlayerInteraction player)
@@ -39,6 +42,25 @@ public class h_GameManager : MonoBehaviour
         
         listChargedShootThorn.Add(thorn);
         thorn.GetComponent<h_ChargedThornBehaviour>().imDie.AddListener(IfChargedThornDie);
+    }
+
+    void IfPlayerShootFlowerThorn(GameObject thorn)
+    {
+        if (listOfFlowerShootThorn.Count >= flowerShootThornMaxAmount)
+        {
+            GameObject obj = listOfFlowerShootThorn[0];
+            listOfFlowerShootThorn.Remove(obj);
+            Destroy(obj);
+        }
+
+        listOfFlowerShootThorn.Add(thorn);
+        thorn.GetComponent<FlowerThornBehaviour>().imDie.AddListener(IfFlowerThornDie);
+        thorn.GetComponent<FlowerThornBehaviour>().playerMovement = player.GetComponent<h_PlayerMovement>();
+    }
+
+    void IfFlowerThornDie(GameObject thorn) 
+    {
+        listOfFlowerShootThorn.Remove(thorn);
     }
 
     void IfChargedThornDie(GameObject thorn)
