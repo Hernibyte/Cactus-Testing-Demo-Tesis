@@ -6,7 +6,7 @@ public class FlowerThornBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float lifeTime = 6;
-    [SerializeField] float xImpulse = 300;
+    [SerializeField] float xImpulse = 200;
     [SerializeField] float yImpulse = 10;
     [SerializeField] LayerMask floor_LayerMask;
     [SerializeField] LayerMask player_LayerMask;
