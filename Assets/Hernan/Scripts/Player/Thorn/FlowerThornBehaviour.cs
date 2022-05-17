@@ -6,6 +6,8 @@ public class FlowerThornBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float lifeTime = 6;
+    [SerializeField] float xImpulse = 300;
+    [SerializeField] float yImpulse = 10;
     [SerializeField] LayerMask floor_LayerMask;
     [SerializeField] LayerMask player_LayerMask;
     [HideInInspector] public CustomEvents.E_FlowerThorn imDie = new CustomEvents.E_FlowerThorn();
@@ -98,21 +100,21 @@ public class FlowerThornBehaviour : MonoBehaviour
             case FlowerDirection.Up:
                 rot = 90;
                 x = 0;
-                y = 10;
+                y = yImpulse;
                 break;
             case FlowerDirection.Down:
                 rot = 90;
                 x = 0;
-                y = -10;
+                x = -yImpulse;
                 break;
             case FlowerDirection.Left:
                 rot = 0;
-                x = -300;
+                x = -xImpulse;
                 y = 0;
                 break;
             case FlowerDirection.Right:
                 rot = 0;
-                x = 300;
+                x = xImpulse;
                 y = 0;
                 break;
         }
