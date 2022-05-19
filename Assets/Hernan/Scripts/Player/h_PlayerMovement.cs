@@ -87,13 +87,19 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (x > 0)
         {
+            PlayerAnimator.SetBool("Walking", true);
             //playerAttack.meleeAttackDirection = h_Direction.Right;
             lookRight_Event.Invoke();
         }
         else if (x < 0)
         {
+            PlayerAnimator.SetBool("Walking", true);
             //playerAttack.meleeAttackDirection = h_Direction.Left;
             lookLeft_Event.Invoke();
+        }
+        else 
+        {
+            PlayerAnimator.SetBool("Walking", false);
         }
 
         if (!impulseActivated)
@@ -117,7 +123,10 @@ public class h_PlayerMovement : MonoBehaviour
         Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[1].x, checkersPositions[1].y), checkersSize[1], 0, floorLayerMask);
 
         if (coll)
+        { 
             isGrounded = true;
+            PlayerAnimator.SetBool("OnAir", false);
+        }
         else if (isGrounded)
         {
             coyoteTimer += Time.deltaTime;
@@ -138,6 +147,8 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (isJumping && Input.GetKey(KeyCode.Space))
         {
+            PlayerAnimator.SetTrigger("StartJump");
+            PlayerAnimator.SetBool("OnAir", true);
             rb2D.velocity += new Vector2(0, curve.Evaluate(timer) * stats.jumpForce * Time.deltaTime);
             timer += Time.deltaTime;
             if (timer >= 0.4f)
@@ -155,7 +166,11 @@ public class h_PlayerMovement : MonoBehaviour
         }
 
         if (coll2)
+        {
+            PlayerAnimator.SetBool("OnAir", false);
+            PlayerAnimator.SetTrigger("Landing");
             isJumping = false;
+        }
     }
 
     void SetCheckersValue()

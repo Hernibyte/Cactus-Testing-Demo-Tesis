@@ -31,6 +31,7 @@ public class h_PlayerAttack : MonoBehaviour
     [SerializeField] float timeToChargedShoot;
     [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
     [HideInInspector] public CustomEvents.E_FlowerThorn shootFlowerThorn = new CustomEvents.E_FlowerThorn();
+    //[SerializeField] Animator PlayerAnimator;
     float delayNormalRangeAttack = 0;
     bool normalRangeAttackAvailable = false;
     float delayChargedRangeAttack = 0;
@@ -96,6 +97,7 @@ public class h_PlayerAttack : MonoBehaviour
 
     void RangeAttack()
     {
+        //PlayerAnimator.SetTrigger("Shoot");
         if (delayNormalRangeAttack <= timeToNormalShoot)
             delayNormalRangeAttack += Time.deltaTime;
         else
