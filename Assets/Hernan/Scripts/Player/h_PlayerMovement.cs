@@ -11,6 +11,7 @@ public class h_PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask floorLayerMask;
     [SerializeField] AnimationCurve curve;
     [SerializeField] float coyoteTime;
+    [SerializeField] Animator PlayerAnimator;
     [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
 
@@ -29,6 +30,7 @@ public class h_PlayerMovement : MonoBehaviour
     bool impulseActivated;
     Vector2 movementImpulse;
     float timeToImpulse;
+
 
     void Awake()
     {
