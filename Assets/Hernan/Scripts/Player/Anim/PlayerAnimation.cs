@@ -19,12 +19,12 @@ namespace CustomController
 
         void LookToLeft()
         {
-            playerBody.flipX = false;
+            playerBody.flipX = true;
         }
 
         void LookToRight()
         {
-            playerBody.flipX = true;
+            playerBody.flipX = false;
         }
     }
 }
