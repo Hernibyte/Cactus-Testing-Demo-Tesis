@@ -139,6 +139,7 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            PlayerAnimator.SetTrigger("StartJump");
             isGrounded = false;
             isJumping = true;
             timer = 0;
@@ -147,7 +148,6 @@ public class h_PlayerMovement : MonoBehaviour
 
         if (isJumping && Input.GetKey(KeyCode.Space))
         {
-            PlayerAnimator.SetTrigger("StartJump");
             PlayerAnimator.SetBool("OnAir", true);
             rb2D.velocity += new Vector2(0, curve.Evaluate(timer) * stats.jumpForce * Time.deltaTime);
             timer += Time.deltaTime;

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlaceholderForBuild : MonoBehaviour
 {
+    public Vector3 checkpoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,16 @@ public class PlaceholderForBuild : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Game_for_Proto");
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("choca");
+        if(collision.gameObject.tag == "Hazards")
+        {
+            this.gameObject.transform.position = checkpoint;
         }
     }
 }
