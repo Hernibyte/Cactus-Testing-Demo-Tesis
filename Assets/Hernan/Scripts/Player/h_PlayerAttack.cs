@@ -31,7 +31,7 @@ public class h_PlayerAttack : MonoBehaviour
     [SerializeField] float timeToChargedShoot;
     [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
     [HideInInspector] public CustomEvents.E_FlowerThorn shootFlowerThorn = new CustomEvents.E_FlowerThorn();
-    //[SerializeField] Animator PlayerAnimator;
+    [SerializeField] Animator PlayerAnimator;
     float delayNormalRangeAttack = 0;
     bool normalRangeAttackAvailable = false;
     float delayChargedRangeAttack = 0;
@@ -40,9 +40,12 @@ public class h_PlayerAttack : MonoBehaviour
     h_PlayerStats stats;
     SpecialShootType shootType;
 
+    [HideInInspector] public bool flowerPowerUpObtained;
+
     void Awake()
     {
         stats = GetComponent<h_PlayerStats>();
+        flowerPowerUpObtained = false;
     }
 
     void Update()
@@ -50,7 +53,7 @@ public class h_PlayerAttack : MonoBehaviour
         //MeleeAttack();
         RangeAttack();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && flowerPowerUpObtained)
         {
             switch(shootType)
             {
