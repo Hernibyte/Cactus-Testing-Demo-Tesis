@@ -31,9 +31,15 @@ public class PlaceholderForBuild : MonoBehaviour
     {
         if (collision.gameObject.tag == "PowerUp" /*&& Input.GetKeyDown(KeyCode.E)*/)
         {
-            Debug.Log("pickea");
             PlayerAnimator.SetTrigger("PickUp");
+            if(collision.gameObject.name == "Trampolin")
+            { 
             playerAttack.flowerPowerUpObtained = true;
+            }
+            if (collision.gameObject.name == "PinchoExtra")
+            {
+                // agrega pincho extra
+            }
             Destroy(collision.gameObject);
         }
     }
