@@ -7,6 +7,7 @@ public class PlaceholderForBuild : MonoBehaviour
 {
     public Vector3 checkpoint;
     public h_PlayerAttack playerAttack;
+    public h_GameManager gm;
     [SerializeField] Animator PlayerAnimator;
     // Start is called before the first frame update
     void Start()
@@ -32,13 +33,13 @@ public class PlaceholderForBuild : MonoBehaviour
         if (collision.gameObject.tag == "PowerUp" /*&& Input.GetKeyDown(KeyCode.E)*/)
         {
             PlayerAnimator.SetTrigger("PickUp");
-            if(collision.gameObject.name == "Trampolin")
-            { 
-            playerAttack.flowerPowerUpObtained = true;
+            if (collision.gameObject.name == "Trampolin")
+            {
+                playerAttack.flowerPowerUpObtained = true;
             }
             if (collision.gameObject.name == "PinchoExtra")
             {
-                // agrega pincho extra
+                gm.addChargedShootThornMaxAmount();
             }
             Destroy(collision.gameObject);
         }

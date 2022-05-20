@@ -67,4 +67,9 @@ public class h_GameManager : MonoBehaviour
     {
         listChargedShootThorn.Remove(thorn);
     }
+
+    public void addChargedShootThornMaxAmount()
+    {
+        chargedShootThornMaxAmount++;
+    }
 }
