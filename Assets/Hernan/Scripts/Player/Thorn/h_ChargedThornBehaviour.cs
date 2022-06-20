@@ -41,7 +41,11 @@ public class h_ChargedThornBehaviour : MonoBehaviour
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 transform.position = new Vector3(transform.position.x, other.ClosestPoint(transform.position).y);
-                transform.rotation = Quaternion.identity;
+                if (x < 0)
+                    transform.rotation = Quaternion.identity;
+                else
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
+
             }
             else
             {

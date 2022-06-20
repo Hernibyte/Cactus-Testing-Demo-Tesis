@@ -120,8 +120,9 @@ public class FlowerThornBehaviour : MonoBehaviour
         }
 
         Collider2D coll = Physics2D.OverlapBox(transform.position - (transform.right * 2.2f), new Vector3(1f, 2, 0.5f), rot, player_LayerMask);
-        if (coll)
+        if (coll && impulsePlayer)
         {
+            impulsePlayer = false;
             playerMovement.ApplyImpulse(x, y, 0.16f);
         }
     }
