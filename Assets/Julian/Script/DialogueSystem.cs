@@ -25,16 +25,18 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField]
     public struct dialogueBranch
     {
-        public bool activated;
+        public bool branchDone;
         public List<string> playerDialog;
         public List<string> NPCDialog;
     }
-    public TextMeshProUGUI dialogFrame;
-    public float textSpeed;
     public string firstPlayerDialogue;
     public string firstNPCDialogue;
     public List<dialogueBranch> NPCDialogBranches;
+    public string allDoneNPCDialogue;
+
+    public TextMeshProUGUI dialogFrame;
     bool dialogueStarted;
+    public float textSpeed;
     bool playerDialogue;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +51,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (dialogueStarted == true)
         {
+
             if (Input.GetKeyUp(KeyCode.End) || Input.GetKeyUp(KeyCode.KeypadEnter))
             {
 
