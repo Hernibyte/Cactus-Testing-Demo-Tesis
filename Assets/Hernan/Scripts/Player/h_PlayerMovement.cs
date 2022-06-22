@@ -31,7 +31,6 @@ public class h_PlayerMovement : MonoBehaviour
     Vector2 movementImpulse;
     float timeToImpulse;
 
-
     void Awake()
     {
         //playerAttack = GetComponent<h_PlayerAttack>();
@@ -122,8 +121,10 @@ public class h_PlayerMovement : MonoBehaviour
         Collider2D coll = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[0].x, checkersPositions[0].y), checkersSize[0], 0, floorLayerMask);
         Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[1].x, checkersPositions[1].y), checkersSize[1], 0, floorLayerMask);
 
+        if (!coll)
+            isGrounded = false;
         if (coll)
-        { 
+        {
             isGrounded = true;
             PlayerAnimator.SetBool("OnAir", false);
         }
