@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     public bool dialogueStarted;
     public float textSpeed;
     bool playerDialogue;
-    private NPC_Dialogue dialogueInfo;
+    public NPC_Dialogue dialogueInfo;
     public bool collidingWithNPC;
 
     void Start()
@@ -26,7 +26,6 @@ public class PlayerUI : MonoBehaviour
         }
         if (dialogueStarted == true)
         {
-            dialoguePanel.SetActive(true);
             if (Input.GetKeyUp(KeyCode.End) || Input.GetKeyUp(KeyCode.KeypadEnter))
             {
                 dialogFrame.gameObject.SetActive(false);
@@ -44,8 +43,10 @@ public class PlayerUI : MonoBehaviour
     void startDialogueSystem()
     {
         dialogueStarted = true;
+        dialoguePanel.gameObject.SetActive(true);
         dialogFrame.gameObject.SetActive(true);
         dialogFrame.text = dialogueInfo.firstPlayerDialogue;
+        dialogFrame.SetText(dialogueInfo.firstPlayerDialogue);
     }
 
     void setDialogue(int branchIndex, int dialogueIndex, bool isPlayerDialogue)
