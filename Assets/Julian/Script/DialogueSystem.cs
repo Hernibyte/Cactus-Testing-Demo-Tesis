@@ -22,64 +22,29 @@ public class DialogueSystem : MonoBehaviour
         5- 
          */
 
-    [SerializeField]
+    [System.Serializable][SerializeField]
     public struct dialogueBranch
     {
         public bool branchDone;
         public List<string> playerDialog;
         public List<string> NPCDialog;
     }
+
     public string firstPlayerDialogue;
     public string firstNPCDialogue;
     public List<dialogueBranch> NPCDialogBranches;
     public string allDoneNPCDialogue;
 
-    public TextMeshProUGUI dialogFrame;
-    bool dialogueStarted;
-    public float textSpeed;
-    bool playerDialogue;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+
+
+    
+    void dialogueBranchDone(int index)
     {
-        if (collision.tag == "Player" && Input.GetKeyUp(KeyCode.E))
-        {
-            startDialogueSystem();
-        }
-    }
-
-    private void Update()
-    {
-        if (dialogueStarted == true)
-        {
-
-            if (Input.GetKeyUp(KeyCode.End) || Input.GetKeyUp(KeyCode.KeypadEnter))
-            {
-
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            dialogueStarted = false;
-            dialogFrame.gameObject.SetActive(false);
-        }
-    }
-    void startDialogueSystem()
-    {
-        dialogueStarted = true;
-        dialogFrame.gameObject.SetActive(true);
-        dialogFrame.text = firstPlayerDialogue;        
-    }
-
-    void setDialogue(int branchIndex, int dialogueIndex, bool isPlayerDialogue)
-    {
-        if(isPlayerDialogue)
+        if(NPCDialogBranches.Count> index)
         { 
-            dialogFrame.text = NPCDialogBranches[branchIndex].playerDialog[dialogueIndex];
-        }
-        else 
-        {
-            dialogFrame.text = NPCDialogBranches[branchIndex].NPCDialog[dialogueIndex];
+            //NPCDialogBranches[index].branchDone = true;
         }
     }
 
