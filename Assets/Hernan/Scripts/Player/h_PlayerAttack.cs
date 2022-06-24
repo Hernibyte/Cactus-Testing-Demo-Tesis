@@ -29,6 +29,7 @@ public class h_PlayerAttack : MonoBehaviour
     //public h_Direction meleeAttackDirection;
     [SerializeField] float timeToNormalShoot;
     [SerializeField] float timeToChargedShoot;
+    [SerializeField] float timeToFlowerShoot;
     [HideInInspector] public Ev_ChargedThorn shootChargedThorn = new Ev_ChargedThorn();
     [HideInInspector] public CustomEvents.E_FlowerThorn shootFlowerThorn = new CustomEvents.E_FlowerThorn();
     [SerializeField] Animator PlayerAnimator;
@@ -36,6 +37,8 @@ public class h_PlayerAttack : MonoBehaviour
     bool normalRangeAttackAvailable = false;
     float delayChargedRangeAttack = 0;
     bool chagedRangeAttackAvailable = false;
+    float delayFlowerRangeAttack = 0;
+    bool flowerRangeAttackAvailable = false;
     //Vector2 meleeAttackPosition = new Vector2();
     h_PlayerStats stats;
     SpecialShootType shootType = SpecialShootType.ChargedShoot;
@@ -111,6 +114,11 @@ public class h_PlayerAttack : MonoBehaviour
         else
             chagedRangeAttackAvailable = true;
 
+        if (delayFlowerRangeAttack <= timeToFlowerShoot)
+            delayFlowerRangeAttack += Time.deltaTime;
+        else
+            flowerRangeAttackAvailable = true;
+
         if (chagedRangeAttackAvailable && Input.GetKey(KeyCode.Mouse1))
         {
             shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
@@ -118,11 +126,11 @@ public class h_PlayerAttack : MonoBehaviour
             delayChargedRangeAttack = 0f;
         }
 
-        if (chagedRangeAttackAvailable && Input.GetKey(KeyCode.F))
+        if (flowerRangeAttackAvailable && Input.GetKey(KeyCode.F))
         {
             shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
-            chagedRangeAttackAvailable = false;
-            delayChargedRangeAttack = 0f;
+            flowerRangeAttackAvailable = false;
+            delayFlowerRangeAttack = 0f;
         }
 
         if (normalRangeAttackAvailable && Input.GetKey(KeyCode.Mouse0))

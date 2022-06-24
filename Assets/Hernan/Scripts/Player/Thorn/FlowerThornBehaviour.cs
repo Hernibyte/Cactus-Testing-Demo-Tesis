@@ -53,7 +53,7 @@ public class FlowerThornBehaviour : MonoBehaviour
         if (h_Utils.LayerMaskContains(floor_LayerMask, other.gameObject.layer))
         {
             imMove = false;
-            gameObject.layer = 8;
+            //gameObject.layer = 8;
             //boxCollider2D.isTrigger = false;
 
             float x = transform.position.x - other.ClosestPoint(transform.position).x;
