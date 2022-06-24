@@ -7,17 +7,19 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     public GameObject dialoguePanel;
+    public GameObject branchButtons;
     public TextMeshProUGUI dialogFrame;
     public bool dialogueStarted;
     public float textSpeed;
-    bool playerDialogue;
     public NPC_Dialogue dialogueInfo;
     public bool collidingWithNPC;
+    bool allBranchesDone;
+    bool showBranches;
+    bool branchesStarted;
+    public int indexPre;
+    int indexPost;
+    int selectedBranch;
 
-    void Start()
-    {
-        
-    }
     private void Update()
     {
         if (collidingWithNPC == true && Input.GetKeyDown(KeyCode.E))
@@ -31,6 +33,23 @@ public class PlayerUI : MonoBehaviour
                 dialogFrame.gameObject.SetActive(false);
                 dialoguePanel.gameObject.SetActive(false);
             }
+            if (Input.GetKeyUp(KeyCode.Return))
+            {
+                if(dialogueInfo.dialoguePreBranches.Count > indexPre+1)
+                {
+                    StartCoroutine(ShowText());
+                }
+                else 
+                {
+                    showBranches = true;
+                }
+            }
+        }
+        if (showBranches == true)
+        {
+            dialogFrame.SetText("");
+            branchButtons.gameObject.SetActive(true);
+            branchesStarted = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -45,20 +64,45 @@ public class PlayerUI : MonoBehaviour
         dialogueStarted = true;
         dialoguePanel.gameObject.SetActive(true);
         dialogFrame.gameObject.SetActive(true);
-        dialogFrame.text = dialogueInfo.firstPlayerDialogue;
-        dialogFrame.SetText(dialogueInfo.firstPlayerDialogue);
+        if (allBranchesDone)
+        {
+            dialogFrame.SetText(dialogueInfo.allDoneNPCDialogue);
+        }
+        else 
+        {
+            if (branchesStarted)
+            {
+                dialogFrame.SetText("");
+                branchButtons.gameObject.SetActive(true);
+            }
+            else
+            {
+                indexPre = 0;
+                dialogFrame.SetText(dialogueInfo.dialoguePreBranches[indexPre]);
+            }
+        }
     }
 
-    void setDialogue(int branchIndex, int dialogueIndex, bool isPlayerDialogue)
+
+    public void selectBranch(int index)
     {
-        if (isPlayerDialogue)
-        {
-            //dialogFrame.text = NPCDialogBranches[branchIndex].playerDialog[dialogueIndex];
-        }
-        else
-        {
-           // dialogFrame.text = NPCDialogBranches[branchIndex].NPCDialog[dialogueIndex];
-        }
+        StartCoroutine(Selection(index));
+    }
+
+    IEnumerator ShowText()
+    {
+        yield return new WaitForSeconds(0.1f);
+        indexPre++;
+        dialogFrame.SetText(dialogueInfo.dialoguePreBranches[indexPre]);
+    }
+    IEnumerator Selection(int index)
+    {
+        yield return new WaitForSeconds(0.1f);
+        selectedBranch = index;
+        indexPost = 1;
+        showBranches = false;
+        branchButtons.gameObject.SetActive(false);
+        dialogFrame.SetText(dialogueInfo.NPCDialogBranches[index].branchDialogue[indexPost]);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -79,5 +123,7 @@ public class PlayerUI : MonoBehaviour
             collidingWithNPC = false;
         }
     }
+
+
 
 }
