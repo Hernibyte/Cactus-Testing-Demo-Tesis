@@ -8,13 +8,13 @@ public class NPC_Dialogue : MonoBehaviour
     [SerializeField]
     public struct dialogueBranch
     {
-        public bool branchDone;
-        public List<string> playerDialog;
-        public List<string> NPCDialog;
+        public List<string> branchDialogue;
     }
 
-    public string firstPlayerDialogue;
-    public string firstNPCDialogue;
+    public bool branch1Done;
+    public bool branch2Done;
+    public bool branch3Done;
+    public List<string> dialoguePreBranches;
     public List<dialogueBranch> NPCDialogBranches;
     public string allDoneNPCDialogue;
 
@@ -22,7 +22,7 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (NPCDialogBranches.Count > index)
         {
-            //NPCDialogBranches[index].branchDone = true;
+           // NPCDialogBranches[index].branchDone = true;
         }
     }
 }
