@@ -136,7 +136,7 @@ public class h_PlayerAttack : MonoBehaviour
 
         if (normalRangeAttackAvailable && Input.GetKey(KeyCode.Mouse0))
         {
-            GenerateThorn(simpleThorn);
+            //GenerateThorn(simpleThorn); TODO Sacar esto en caso de usar los ataques normales
             normalRangeAttackAvailable = false;
             delayNormalRangeAttack = 0;
         }
@@ -180,5 +180,14 @@ public class h_PlayerAttack : MonoBehaviour
         GameObject obj = Instantiate(thornType, transform.position, Quaternion.identity);
         obj.transform.rotation = Quaternion.Euler(0, 0, angle);
         return obj;
+    }
+
+    public bool getChargedRangeAttackAvailable()
+    {
+        return chagedRangeAttackAvailable;
+    }
+    public bool getFlowerAvailable()
+    {
+        return flowerRangeAttackAvailable;
     }
 }

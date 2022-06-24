@@ -21,12 +21,46 @@ public class PlayerUI : MonoBehaviour
     int indexPost;
     int selectedBranch;
 
+
+    h_GameManager gm;
+    h_PlayerAttack pa;
+    public GameObject trampolinAvailable;
+    public GameObject trampolin;
+    public GameObject pinchPlatformAvailable;
+    public TextMeshProUGUI pinchPlatformCuantity;
+
     private void Start()
     {
         brancheSelected = false;
     }
     private void Update()
     {
+        gm = FindObjectOfType<h_GameManager>();
+        pa = FindObjectOfType<h_PlayerAttack>();
+
+        pinchPlatformCuantity.text = gm.getChargedShootThornMaxAmount().ToString();
+        if (pa.getChargedRangeAttackAvailable())
+        {
+            pinchPlatformAvailable.SetActive(false);
+        }
+        else
+        {
+            pinchPlatformAvailable.SetActive(true);
+        }
+        if (pa.flowerPowerUpObtained)
+        {
+            trampolin.SetActive(true);
+            if (pa.getFlowerAvailable())
+            {
+                trampolinAvailable.SetActive(false);
+            }
+            else
+            {
+                trampolinAvailable.SetActive(true);
+            }
+        }
+
+
         if (collidingWithNPC == true && Input.GetKeyDown(KeyCode.E))
         {
             startDialogueSystem();

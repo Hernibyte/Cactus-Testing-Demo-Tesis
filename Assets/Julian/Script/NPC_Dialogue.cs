@@ -18,11 +18,4 @@ public class NPC_Dialogue : MonoBehaviour
     public List<dialogueBranch> NPCDialogBranches;
     public string allDoneNPCDialogue;
 
-    public void dialogueBranchDone(int index)
-    {
-        if (NPCDialogBranches.Count > index)
-        {
-           // NPCDialogBranches[index].branchDone = true;
-        }
-    }
 }

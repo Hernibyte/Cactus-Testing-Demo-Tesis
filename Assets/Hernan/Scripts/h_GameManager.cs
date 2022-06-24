@@ -72,4 +72,9 @@ public class h_GameManager : MonoBehaviour
     {
         chargedShootThornMaxAmount++;
     }
+
+    public int getChargedShootThornMaxAmount()
+    {
+        return chargedShootThornMaxAmount;
+    }
 }
