@@ -48,7 +48,7 @@ public class PlaceholderForBuild : MonoBehaviour
     {
         if(collision.gameObject.tag == "Hazards")
         {
-            this.gameObject.transform.position = checkpoint;
+           // this.gameObject.transform.position = checkpoint;
         }
 
         
