@@ -126,12 +126,13 @@ public class h_PlayerAttack : MonoBehaviour
             delayChargedRangeAttack = 0f;
         }
 
-        if (flowerRangeAttackAvailable && Input.GetKey(KeyCode.F))
-        {
-            shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
-            flowerRangeAttackAvailable = false;
-            delayFlowerRangeAttack = 0f;
-        }
+        if (flowerPowerUpObtained)
+            if (flowerRangeAttackAvailable && Input.GetKey(KeyCode.F))
+            {
+                shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
+                flowerRangeAttackAvailable = false;
+                delayFlowerRangeAttack = 0f;
+            }
 
         if (normalRangeAttackAvailable && Input.GetKey(KeyCode.Mouse0))
         {
