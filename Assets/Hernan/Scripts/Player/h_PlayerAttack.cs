@@ -119,7 +119,7 @@ public class h_PlayerAttack : MonoBehaviour
                     shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
                     break;
                 case SpecialShootType.FlowerShoot:
-                    shootFlowerThorn.Invoke(GenerateThorn(flowerThorn));
+                    shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
                     break;
             }
             chagedRangeAttackAvailable = false;
@@ -150,6 +150,13 @@ public class h_PlayerAttack : MonoBehaviour
         //        chargeRangeAttack = 0;
         //    }
         //}
+    }
+
+    GameObject GenerateThorn(GameObject thornType, float angle)
+    {
+        GameObject obj = Instantiate(thornType, transform.position, Quaternion.identity);
+        obj.transform.rotation = Quaternion.Euler(0, 0, angle);
+        return obj;
     }
 
     GameObject GenerateThorn(GameObject thornType)

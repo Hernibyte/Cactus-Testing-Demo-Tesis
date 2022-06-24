@@ -17,7 +17,8 @@ public class FlowerThornBehaviour : MonoBehaviour
     Rigidbody2D rb2D;
     bool imMove = true;
     float timeToDie = 0;
-    bool impulsePlayer;
+    public bool impulsePlayer = true;
+    public bool activeImpulsePlayer = false;
 
     enum FlowerDirection
     {
@@ -37,8 +38,9 @@ public class FlowerThornBehaviour : MonoBehaviour
     {
         Move();
         TimeToDisappear();
-        if (impulsePlayer)
-            ImpulseThePlayer();
+        if (activeImpulsePlayer)
+            if (impulsePlayer)
+                ImpulseThePlayer();
     }
 
     void OnDrawGizmos()
@@ -50,10 +52,9 @@ public class FlowerThornBehaviour : MonoBehaviour
     {
         if (h_Utils.LayerMaskContains(floor_LayerMask, other.gameObject.layer))
         {
-            impulsePlayer = true;
             imMove = false;
             gameObject.layer = 8;
-            boxCollider2D.isTrigger = false;
+            //boxCollider2D.isTrigger = false;
 
             float x = transform.position.x - other.ClosestPoint(transform.position).x;
             float y = transform.position.y - other.ClosestPoint(transform.position).y;
@@ -86,6 +87,14 @@ public class FlowerThornBehaviour : MonoBehaviour
                     flowerDirection = FlowerDirection.Up;
                 }
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (h_Utils.LayerMaskContains(player_LayerMask, other.gameObject.layer))
+        {
+            activeImpulsePlayer = true;
         }
     }
 
@@ -122,6 +131,7 @@ public class FlowerThornBehaviour : MonoBehaviour
         Collider2D coll = Physics2D.OverlapBox(transform.position - (transform.right * 2.2f), new Vector3(1f, 2, 0.5f), rot, player_LayerMask);
         if (coll && impulsePlayer)
         {
+            playerMovement.rb2D.velocity = new Vector2(playerMovement.rb2D.velocity.x, 0);
             impulsePlayer = false;
             playerMovement.ApplyImpulse(x, y, 0.16f);
         }

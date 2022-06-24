@@ -105,6 +105,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerMovement: {fileID: 0}
+  impulsePlayer: 1
+  activeImpulsePlayer: 0
 --- !u!1 &6687209719440565872
 GameObject:
   m_ObjectHideFlags: 0

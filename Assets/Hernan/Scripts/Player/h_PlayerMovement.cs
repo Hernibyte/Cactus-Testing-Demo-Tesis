@@ -20,7 +20,7 @@ public class h_PlayerMovement : MonoBehaviour
 
     //h_PlayerAttack playerAttack;
     h_PlayerStats stats;
-    Rigidbody2D rb2D;
+    public Rigidbody2D rb2D { get; set; }
     BoxCollider2D boxCollider2D;
     bool isGrounded;
     bool isJumping;
