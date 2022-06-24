@@ -56,6 +56,11 @@ public class h_ChargedThornBehaviour : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 0, -90);
             }
         }
+        if (other.gameObject.tag == "Hazards")
+        {
+            imDie.Invoke(this.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 
     void Move()
