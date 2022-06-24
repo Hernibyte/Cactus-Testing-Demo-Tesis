@@ -38,7 +38,7 @@ public class h_PlayerAttack : MonoBehaviour
     bool chagedRangeAttackAvailable = false;
     //Vector2 meleeAttackPosition = new Vector2();
     h_PlayerStats stats;
-    SpecialShootType shootType;
+    SpecialShootType shootType = SpecialShootType.ChargedShoot;
 
     [HideInInspector] public bool flowerPowerUpObtained;
 
@@ -53,18 +53,18 @@ public class h_PlayerAttack : MonoBehaviour
         //MeleeAttack();
         RangeAttack();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && flowerPowerUpObtained)
-        {
-            switch(shootType)
-            {
-                case SpecialShootType.ChargedShoot:
-                    shootType = SpecialShootType.FlowerShoot;
-                    break;
-                case SpecialShootType.FlowerShoot:
-                    shootType = SpecialShootType.ChargedShoot;
-                    break;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift) && flowerPowerUpObtained)
+        //{
+        //    switch(shootType)
+        //    {
+        //        case SpecialShootType.ChargedShoot:
+        //            shootType = SpecialShootType.FlowerShoot;
+        //            break;
+        //        case SpecialShootType.FlowerShoot:
+        //            shootType = SpecialShootType.ChargedShoot;
+        //            break;
+        //    }
+        //}
     }
 
     void OnDrawGizmos()
@@ -113,15 +113,14 @@ public class h_PlayerAttack : MonoBehaviour
 
         if (chagedRangeAttackAvailable && Input.GetKey(KeyCode.Mouse1))
         {
-            switch(shootType)
-            {
-                case SpecialShootType.ChargedShoot:
-                    shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
-                    break;
-                case SpecialShootType.FlowerShoot:
-                    shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
-                    break;
-            }
+            shootChargedThorn.Invoke(GenerateThorn(chargedThorn));
+            chagedRangeAttackAvailable = false;
+            delayChargedRangeAttack = 0f;
+        }
+
+        if (chagedRangeAttackAvailable && Input.GetKey(KeyCode.F))
+        {
+            shootFlowerThorn.Invoke(GenerateThorn(flowerThorn, -90));
             chagedRangeAttackAvailable = false;
             delayChargedRangeAttack = 0f;
         }
