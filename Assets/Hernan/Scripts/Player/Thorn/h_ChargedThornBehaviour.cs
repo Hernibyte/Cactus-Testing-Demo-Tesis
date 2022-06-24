@@ -8,7 +8,6 @@ public class h_ChargedThornBehaviour : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float lifeTime = 4;
     [SerializeField] LayerMask floor_LayerMask;
-    [SerializeField] LayerMask hazard_LayerMask;
     [HideInInspector] public Ev_ChargedThorn imDie = new Ev_ChargedThorn();
 
     BoxCollider2D boxCollider2D;
@@ -59,7 +58,6 @@ public class h_ChargedThornBehaviour : MonoBehaviour
         }
         if (other.gameObject.tag == "Hazards")
         {
-            Debug.Log("chocó contra hazard");
             imDie.Invoke(this.gameObject);
             Destroy(this.gameObject);
         }
