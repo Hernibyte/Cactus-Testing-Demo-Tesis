@@ -15,6 +15,9 @@ public class h_ChargedThornBehaviour : MonoBehaviour
     bool imMove = true;
     float timeToDie = 0;
 
+    h_ChargedThornBehaviour otherThornBehaviour = null;
+    bool getOtherThorn = false;
+
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -25,35 +28,49 @@ public class h_ChargedThornBehaviour : MonoBehaviour
     {
         Move();
         TimeToDisappear();
+
+        if (getOtherThorn)
+        {
+            if (otherThornBehaviour == null)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (h_Utils.LayerMaskContains(floor_LayerMask, other.gameObject.layer))
         {
-            imMove = false;
-            gameObject.layer = 8;
-            boxCollider2D.isTrigger = false;
+            otherThornBehaviour = other.transform.GetComponent<h_ChargedThornBehaviour>();
+            if (otherThornBehaviour) getOtherThorn = true;
 
-            float x = transform.position.x - other.ClosestPoint(transform.position).x;
-            float y = transform.position.y - other.ClosestPoint(transform.position).y;
-
-            if (Mathf.Abs(x) > Mathf.Abs(y))
+            if (imMove)
             {
-                transform.position = new Vector3(transform.position.x, other.ClosestPoint(transform.position).y);
-                if (x < 0)
-                    transform.rotation = Quaternion.identity;
-                else
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                imMove = false;
+                gameObject.layer = 8;
+                boxCollider2D.isTrigger = false;
 
-            }
-            else
-            {
-                transform.position = new Vector3(other.ClosestPoint(transform.position).x, transform.position.y);
-                if (y < 0)
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                float x = transform.position.x - other.ClosestPoint(transform.position).x;
+                float y = transform.position.y - other.ClosestPoint(transform.position).y;
+
+                if (Mathf.Abs(x) > Mathf.Abs(y))
+                {
+                    transform.position = new Vector3(transform.position.x, other.ClosestPoint(transform.position).y);
+                    if (x < 0)
+                        transform.rotation = Quaternion.identity;
+                    else
+                        transform.rotation = Quaternion.Euler(0, 0, 180);
+                }
                 else
-                    transform.rotation = Quaternion.Euler(0, 0, -90);
+                {
+                    transform.position = new Vector3(other.ClosestPoint(transform.position).x, transform.position.y);
+                    if (y < 0)
+                        transform.rotation = Quaternion.Euler(0, 0, 90);
+                    else
+                        transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
             }
         }
         if (other.gameObject.tag == "Hazards")

@@ -10,9 +10,9 @@ public class PlaceholderForBuild : MonoBehaviour
     public h_GameManager gm;
     [SerializeField] Animator PlayerAnimator;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        gm = FindObjectOfType<h_GameManager>();
     }
 
     // Update is called once per frame

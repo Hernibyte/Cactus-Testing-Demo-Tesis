@@ -32,6 +32,8 @@ public class FlowerThornBehaviour : MonoBehaviour
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+
+        playerMovement = FindObjectOfType<h_PlayerMovement>();
     }
 
     void Update()
