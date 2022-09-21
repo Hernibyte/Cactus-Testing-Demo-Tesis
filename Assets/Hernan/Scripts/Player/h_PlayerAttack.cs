@@ -24,7 +24,6 @@ public class h_PlayerAttack : MonoBehaviour
     [SerializeField] GameObject simpleThorn;
     [SerializeField] GameObject chargedThorn;
     [SerializeField] GameObject flowerThorn;
-    [SerializeField] Transform mouseWorldPosition;
     [SerializeField] LayerMask enemy_LayerMask;
     //public h_Direction meleeAttackDirection;
     [SerializeField] float timeToNormalShoot;
@@ -39,6 +38,7 @@ public class h_PlayerAttack : MonoBehaviour
     bool chagedRangeAttackAvailable = false;
     float delayFlowerRangeAttack = 0;
     bool flowerRangeAttackAvailable = false;
+    Transform mouseWorldPosition;
     //Vector2 meleeAttackPosition = new Vector2();
     h_PlayerStats stats;
     SpecialShootType shootType = SpecialShootType.ChargedShoot;
@@ -49,6 +49,8 @@ public class h_PlayerAttack : MonoBehaviour
     {
         stats = GetComponent<h_PlayerStats>();
         flowerPowerUpObtained = false;
+
+        mouseWorldPosition = FindObjectOfType<h_MouseTracker>().transform;
     }
 
     void Update()
