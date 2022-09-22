@@ -30,27 +30,18 @@ public class PlaceholderForBuild : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PowerUp" /*&& Input.GetKeyDown(KeyCode.E)*/)
+        if (collision.gameObject.tag == "CheckpointOff")
         {
-            PlayerAnimator.SetTrigger("PickUp");
-            if (collision.gameObject.name == "Trampolin")
-            {
-                playerAttack.flowerPowerUpObtained = true;
-            }
-            if (collision.gameObject.name == "PinchoExtra")
-            {
-                gm.addChargedShootThornMaxAmount();
-            }
-            Destroy(collision.gameObject);
+            checkpoint = collision.transform.position;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Hazards")
+        if(collision.gameObject.tag == "Bad")
         {
-           // this.gameObject.transform.position = checkpoint;
-        }
+           this.gameObject.transform.position = checkpoint;
+        }  
 
-        
+
     }
 }

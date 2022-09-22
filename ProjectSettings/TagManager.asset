@@ -8,6 +8,8 @@ TagManager:
   - Hazards
   - PowerUp
   - NPC
+  - Bad
+  - CheckpointOff
   layers:
   - Default
   - TransparentFX
