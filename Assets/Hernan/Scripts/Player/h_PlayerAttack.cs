@@ -37,7 +37,7 @@ public class h_PlayerAttack : MonoBehaviour
     float delayChargedRangeAttack = 0;
     bool chagedRangeAttackAvailable = false;
     float delayFlowerRangeAttack = 0;
-    bool flowerRangeAttackAvailable = false;
+    public bool flowerRangeAttackAvailable = false;
     Transform mouseWorldPosition;
     //Vector2 meleeAttackPosition = new Vector2();
     h_PlayerStats stats;

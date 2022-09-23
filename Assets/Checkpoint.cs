@@ -12,8 +12,9 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             this.GetComponent<SpriteRenderer>().sprite = checkpointON;
-            Debug.Log("si");
         }
 
     }
+
+    
 }
