@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c26fbadb18b31a48b36d9bd9419f601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5000
-  jumpForce: 3000
+  movementSpeed: 9000
+  jumpForce: 3200
   damage: 5
 --- !u!114 &6010256834365874104
 MonoBehaviour:
