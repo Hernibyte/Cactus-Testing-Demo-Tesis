@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class FlowerThornBehaviour : MonoBehaviour
@@ -19,6 +20,8 @@ public class FlowerThornBehaviour : MonoBehaviour
     float timeToDie = 0;
     public bool impulsePlayer = true;
     public bool activeImpulsePlayer = false;
+
+    private bool flowerInPosition = false;
 
     enum FlowerDirection
     {
@@ -40,20 +43,26 @@ public class FlowerThornBehaviour : MonoBehaviour
     {
         Move();
         TimeToDisappear();
-        if (activeImpulsePlayer)
-            if (impulsePlayer)
-                ImpulseThePlayer();
+        
+        Collider2D coll = Physics2D.OverlapBox(transform.position, new Vector2(12, 12), 0, player_LayerMask);
+        if (!coll)
+        {
+            activeImpulsePlayer = true;
+            if (flowerInPosition) boxCollider2D.isTrigger = false;
+        }
     }
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position - (transform.right * 2.2f), new Vector3(0.6f, 2, 0.5f));
+        //Gizmos.DrawCube(transform.position, new Vector2(12, 12));
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (h_Utils.LayerMaskContains(floor_LayerMask, other.gameObject.layer))
         {
+            flowerInPosition = true;
+
             imMove = false;
             //gameObject.layer = 8;
             //boxCollider2D.isTrigger = false;
@@ -92,11 +101,17 @@ public class FlowerThornBehaviour : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (h_Utils.LayerMaskContains(player_LayerMask, other.gameObject.layer))
+        if (activeImpulsePlayer)
         {
-            activeImpulsePlayer = true;
+            if (h_Utils.LayerMaskContains(player_LayerMask, other.gameObject.layer))
+            {
+                if (impulsePlayer)
+                {
+                    if (other.GetContact(0).normal == Vector2.down) ImpulseThePlayer();
+                }
+            }
         }
     }
 
@@ -130,13 +145,9 @@ public class FlowerThornBehaviour : MonoBehaviour
                 break;
         }
 
-        Collider2D coll = Physics2D.OverlapBox(transform.position - (transform.right * 2.2f), new Vector3(1f, 2, 0.5f), rot, player_LayerMask);
-        if (coll && impulsePlayer)
-        {
-            playerMovement.rb2D.velocity = new Vector2(playerMovement.rb2D.velocity.x, 0);
-            impulsePlayer = false;
-            playerMovement.ApplyImpulse(x, y, 0.16f);
-        }
+        playerMovement.rb2D.velocity = new Vector2(playerMovement.rb2D.velocity.x, 0);
+        impulsePlayer = false;
+        playerMovement.ApplyImpulse(x, y, 0.16f);
     }
 
     void Move()
