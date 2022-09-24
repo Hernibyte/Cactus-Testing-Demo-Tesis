@@ -43,12 +43,11 @@ public class h_PlayerAttack : MonoBehaviour
     h_PlayerStats stats;
     SpecialShootType shootType = SpecialShootType.ChargedShoot;
 
-    [HideInInspector] public bool flowerPowerUpObtained;
+    public bool flowerPowerUpObtained;
 
     void Awake()
     {
         stats = GetComponent<h_PlayerStats>();
-        flowerPowerUpObtained = false;
 
         mouseWorldPosition = FindObjectOfType<h_MouseTracker>().transform;
     }
