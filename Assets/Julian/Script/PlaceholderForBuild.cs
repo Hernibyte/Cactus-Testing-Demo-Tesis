@@ -18,14 +18,6 @@ public class PlaceholderForBuild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        { 
-            Application.Quit();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Game_for_Proto");
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
