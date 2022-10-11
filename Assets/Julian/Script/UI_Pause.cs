@@ -54,7 +54,7 @@ public class UI_Pause : MonoBehaviour
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("h_Menu");
     }
 
     public void ShowControlls()

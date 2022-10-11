@@ -8,6 +8,16 @@ public class h_MenuManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("h_Game");
+        SceneManager.LoadScene("level tutorial");
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("h_Menu");
     }
 }
