@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 930587870626943640}
   - component: {fileID: 930587870626943647}
-  - component: {fileID: 930587870626943646}
   - component: {fileID: 930587870626943641}
+  - component: {fileID: 7911425169975487276}
   m_Layer: 10
   m_Name: Alternator
   m_TagString: CheckpointOff
@@ -83,19 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &930587870626943646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930587870626943645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eaeee9d9b10ea744a70d7bca48ddd95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkpointON: {fileID: 21300000, guid: f4bb4595cadabfc47af479c6bfd36e48, type: 3}
 --- !u!61 &930587870626943641
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,3 +109,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.32, y: 26.84}
   m_EdgeRadius: 0
+--- !u!114 &7911425169975487276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930587870626943645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff33c598f5b7984fbaa10dab078874d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

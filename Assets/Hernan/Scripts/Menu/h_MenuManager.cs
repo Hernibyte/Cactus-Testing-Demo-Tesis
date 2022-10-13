@@ -20,4 +20,9 @@ public class h_MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("h_Menu");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

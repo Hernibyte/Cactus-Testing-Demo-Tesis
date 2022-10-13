@@ -15,6 +15,8 @@ public class h_GameManager : MonoBehaviour
     List<GameObject> listChargedShootThorn = new List<GameObject>();
     List<GameObject> listOfFlowerShootThorn = new List<GameObject>();
 
+    public bool isInPast;
+
     void Awake()
     {
         playerInteraction = player.GetComponent<h_PlayerInteraction>();
