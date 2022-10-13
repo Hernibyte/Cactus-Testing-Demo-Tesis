@@ -8,6 +8,17 @@ public class LevelManager : MonoBehaviour
     public float timer;
     public TextMeshProUGUI actualTime;
     public int min;
+    public List<GameObject> pastCollectables;
+    public List<GameObject> futureCollectables;
+    public bool npcInLvl;
+    public bool talkToNPC;
+
+    private void Start()
+    {
+        if (npcInLvl)
+        talkToNPC = false;
+    }
+
     void Update()
     {
         timer += Time.deltaTime;

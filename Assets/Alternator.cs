@@ -5,8 +5,8 @@ using UnityEngine;
 public class Alternator : MonoBehaviour
 {
     public bool inAlternator;
-    public GameObject Past;
-    public GameObject Future;
+    public List<GameObject> Past;
+    public List<GameObject> Future;
     public h_GameManager GM;
 
     private void Start()
@@ -37,14 +37,30 @@ public class Alternator : MonoBehaviour
                 Debug.Log("log2");
                 if (GM.isInPast == true)
                 {
-                    Future.SetActive(true);
-                    Past.SetActive(false);
+                    for (int i = 0; i < Future.Count; i++)
+                    {
+                        Future[i].SetActive(true);
+
+                    }
+                    for (int j = 0; j < Past.Count; j++)
+                    {
+                        Past[j].SetActive(false);
+
+                    }
                     GM.isInPast = false;
                 }
                 else
-                {
-                    Future.SetActive(false);
-                    Past.SetActive(true);
+                {                    
+                    for (int i = 0; i < Future.Count; i++)
+                    {
+                        Future[i].SetActive(false);
+
+                    }
+                    for (int j = 0; j < Past.Count; j++)
+                    {
+                        Past[j].SetActive(true);
+
+                    }
                     GM.isInPast = true;
                 }
             }

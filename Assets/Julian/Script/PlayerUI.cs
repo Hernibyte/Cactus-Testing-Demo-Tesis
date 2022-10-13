@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour
     public int indexPre;
     int indexPost;
     int selectedBranch;
+    public LevelManager LvlM;
 
 
     h_GameManager gm;
@@ -117,6 +118,7 @@ public class PlayerUI : MonoBehaviour
                     showBranches = false;
                     branchesStarted = false;
                     dialogFrame.SetText(dialogueInfo.allDoneNPCDialogue);
+                    LvlM.talkToNPC = true;
                 }
 
             }
