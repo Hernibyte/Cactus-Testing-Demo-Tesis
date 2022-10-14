@@ -97,7 +97,7 @@ MonoBehaviour:
   speed: 40
   lifeTime: 4
   xImpulse: 200
-  yImpulse: 2.75
+  yImpulse: 11.5
   floor_LayerMask:
     serializedVersion: 2
     m_Bits: 256
