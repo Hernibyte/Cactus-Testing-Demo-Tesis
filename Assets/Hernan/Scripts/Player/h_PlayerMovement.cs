@@ -39,8 +39,12 @@ public class h_PlayerMovement : MonoBehaviour
     void Update()
     {
         CalculateImpulse();
-        Move();
         Jump();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void OnDrawGizmos()
@@ -89,7 +93,7 @@ public class h_PlayerMovement : MonoBehaviour
         //Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[3].x, checkersPositions[3].y), checkersSize[3], 0, floorLayerMask);
         //Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[2].x, checkersPositions[2].y), checkersSize[2], 0, floorLayerMask);
 
-        float x = Input.GetAxis("Horizontal") * stats.movementSpeed * Time.deltaTime;
+        float x = Input.GetAxis("Horizontal") * stats.movementSpeed;
 
         //if (coll1)
         //    if (x < 0)
@@ -161,7 +165,7 @@ public class h_PlayerMovement : MonoBehaviour
             timer = 0;
             //coyoteTimer = 0;
 
-            rb2D.AddForce(new Vector2(0, stats.jumpForce));
+            rb2D.AddForce(new Vector2(0, stats.jumpForce * Time.deltaTime));
         }
 
         //if (isJumping && Input.GetKey(KeyCode.Space))
