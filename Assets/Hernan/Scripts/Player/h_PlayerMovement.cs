@@ -165,7 +165,7 @@ public class h_PlayerMovement : MonoBehaviour
             timer = 0;
             //coyoteTimer = 0;
 
-            rb2D.AddForce(new Vector2(0, stats.jumpForce * Time.deltaTime));
+            rb2D.AddForce(new Vector2(0, stats.jumpForce));
         }
 
         //if (isJumping && Input.GetKey(KeyCode.Space))
