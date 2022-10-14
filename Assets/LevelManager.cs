@@ -8,8 +8,8 @@ public class LevelManager : MonoBehaviour
     public float timer;
     public TextMeshProUGUI actualTime;
     public int min;
-    public List<GameObject> pastCollectables;
-    public List<GameObject> futureCollectables;
+    public List<Sprite> collectedColectables;
+    public List<Sprite> notCollectedColectables;
     public bool npcInLvl;
     public bool talkToNPC;
 

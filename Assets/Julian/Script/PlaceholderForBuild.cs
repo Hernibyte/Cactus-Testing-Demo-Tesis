@@ -8,6 +8,8 @@ public class PlaceholderForBuild : MonoBehaviour
     public Vector3 checkpoint;
     public h_PlayerAttack playerAttack;
     public h_GameManager gm;
+    public LevelManager LvlM;
+    public List<Sprite> colectables;
     [SerializeField] Animator PlayerAnimator;
     // Start is called before the first frame update
     void Awake()
@@ -15,16 +17,39 @@ public class PlaceholderForBuild : MonoBehaviour
         gm = FindObjectOfType<h_GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "CheckpointOff")
         {
             checkpoint = collision.transform.position;
+        }
+
+        if (collision.gameObject.tag == "Collectable")
+        {
+            if(collision.gameObject.name == "SombreroDeCopa")
+            {
+                LvlM.collectedColectables.Add(colectables[0]);
+            }
+            if (collision.gameObject.name == "Agua")
+            {
+                LvlM.collectedColectables.Add(colectables[1]);
+            }
+            if (collision.gameObject.name == "CajaFuturista")
+            {
+                LvlM.collectedColectables.Add(colectables[2]);
+            }
+            if (collision.gameObject.name == "Gas")
+            {
+                LvlM.collectedColectables.Add(colectables[3]);
+            }
+            if (collision.gameObject.name == "Mapa")
+            {
+                LvlM.collectedColectables.Add(colectables[4]);
+            }
+            Destroy(collision.gameObject);
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
