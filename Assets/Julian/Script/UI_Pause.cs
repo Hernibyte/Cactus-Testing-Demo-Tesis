@@ -56,6 +56,10 @@ public class UI_Pause : MonoBehaviour
     {
         SceneManager.LoadScene("h_Menu");
     }
+    public void NextLevel(string LevelName)
+    {
+        SceneManager.LoadScene(LevelName);
+    }
 
     public void ShowControlls()
     {

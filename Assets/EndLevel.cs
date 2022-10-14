@@ -5,27 +5,32 @@ using TMPro;
 
 public class EndLevel : MonoBehaviour
 {
-    GameObject endLvlPanel;
+    [System.Serializable]
+    public struct colectable
+    {
+        float Id;
+        Sprite sprite;
+        bool inLevel;
+        bool collected;
+    }
+
+    public GameObject endLvlPanel;
     public TextMeshProUGUI finalTime;
     public LevelManager LvlM;
-    public GameObject talkToNpcDone;
-    public GameObject talkToNpcFail;
+    public List<colectable> colectableItems;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            finalTime.SetText(LvlM.min.ToString() + " : " + LvlM.timer.ToString("F2"));
+            endLvlPanel.SetActive(true);
+            Time.timeScale = 0;
+            finalTime.SetText("Final Time: " + LvlM.min.ToString() + ":" + LvlM.timer.ToString("F2")) ;
         }
         if (LvlM.npcInLvl)
         {
-            if (LvlM.talkToNPC)
-            {
-                talkToNpcDone.SetActive(true);
-            }
-            else
-            {
-                talkToNpcFail.SetActive(true);
-            }
+            
         }
     }
 }
