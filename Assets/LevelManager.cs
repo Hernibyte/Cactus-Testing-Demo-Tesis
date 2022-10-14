@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public List<Sprite> notCollectedColectables;
     public bool npcInLvl;
     public bool talkToNPC;
+    public Sprite npcImage;
 
     private void Start()
     {

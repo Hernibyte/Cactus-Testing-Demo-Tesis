@@ -118,7 +118,6 @@ public class PlayerUI : MonoBehaviour
                     showBranches = false;
                     branchesStarted = false;
                     dialogFrame.SetText(dialogueInfo.allDoneNPCDialogue);
-                    LvlM.talkToNPC = true;
                 }
 
             }
@@ -140,6 +139,7 @@ public class PlayerUI : MonoBehaviour
     void startDialogueSystem()
     {
         dialogueStarted = true;
+        LvlM.talkToNPC = true;
         dialoguePanel.gameObject.SetActive(true);
         dialogFrame.gameObject.SetActive(true);
         if (allBranchesDone)
