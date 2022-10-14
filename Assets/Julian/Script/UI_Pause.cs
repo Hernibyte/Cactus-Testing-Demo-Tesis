@@ -25,11 +25,6 @@ public class UI_Pause : MonoBehaviour
         {
             Pause();
         }
-        /*
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }*/
     }
 
     public void Pause()
@@ -50,15 +45,19 @@ public class UI_Pause : MonoBehaviour
     }
     public void RestartLevel()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(actualLvl);
     }
     public void BackToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("h_Menu");
     }
     public void NextLevel(string LevelName)
     {
         SceneManager.LoadScene(LevelName);
+
+        Time.timeScale = 1;
     }
 
     public void ShowControlls()

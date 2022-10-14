@@ -31,23 +31,29 @@ public class PlaceholderForBuild : MonoBehaviour
             if(collision.gameObject.name == "SombreroDeCopa")
             {
                 LvlM.collectedColectables.Add(colectables[0]);
+                LvlM.notCollectedColectables.Remove(colectables[0]);
             }
             if (collision.gameObject.name == "Agua")
             {
                 LvlM.collectedColectables.Add(colectables[1]);
+                LvlM.notCollectedColectables.Remove(colectables[1]);
             }
             if (collision.gameObject.name == "CajaFuturista")
             {
                 LvlM.collectedColectables.Add(colectables[2]);
+                LvlM.notCollectedColectables.Remove(colectables[2]);
             }
             if (collision.gameObject.name == "Gas")
             {
                 LvlM.collectedColectables.Add(colectables[3]);
+                LvlM.notCollectedColectables.Remove(colectables[3]);
             }
             if (collision.gameObject.name == "Mapa")
             {
                 LvlM.collectedColectables.Add(colectables[4]);
+                LvlM.notCollectedColectables.Remove(colectables[4]);
             }
+
             Destroy(collision.gameObject);
 
         }

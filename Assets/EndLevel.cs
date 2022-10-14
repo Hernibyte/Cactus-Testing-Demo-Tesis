@@ -36,6 +36,15 @@ public class EndLevel : MonoBehaviour
                     images[5].color = Color.white;
                 }
             }
+            for (int i = 0; i < LvlM.notCollectedColectables.Count; i++)
+            {
+                images[i].sprite = LvlM.notCollectedColectables[i];
+            }
+            for (int i = 0; i < LvlM.collectedColectables.Count; i++)
+            {
+                images[LvlM.notCollectedColectables.Count + i].sprite = LvlM.collectedColectables[i];
+                images[LvlM.notCollectedColectables.Count + i].color = Color.white;
+            } 
         }
         
     }
