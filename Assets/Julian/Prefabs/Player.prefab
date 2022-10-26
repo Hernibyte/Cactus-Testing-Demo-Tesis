@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010256834365874110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.7, y: 4.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6010256835046266861}
@@ -149,6 +149,7 @@ MonoBehaviour:
   timeToChargedShoot: 3
   timeToFlowerShoot: 4
   PlayerAnimator: {fileID: 531186164289468101}
+  flowerRangeAttackAvailable: 0
   flowerPowerUpObtained: 0
 --- !u!114 &6010256834365874101
 MonoBehaviour:
@@ -195,6 +196,7 @@ MonoBehaviour:
   dialogueInfo: {fileID: 0}
   collidingWithNPC: 0
   indexPre: 0
+  LvlM: {fileID: 0}
   trampolinAvailable: {fileID: 0}
   trampolin: {fileID: 0}
   pinchPlatformAvailable: {fileID: 0}
@@ -214,6 +216,8 @@ MonoBehaviour:
   checkpoint: {x: -97.18, y: 140, z: 0}
   playerAttack: {fileID: 6010256834365874100}
   gm: {fileID: 0}
+  LvlM: {fileID: 0}
+  colectables: []
   PlayerAnimator: {fileID: 531186164289468101}
 --- !u!1 &6010256835046266860
 GameObject:
