@@ -156,10 +156,10 @@ TextureImporter:
       name: Idel_3_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 48
         y: 0
-        width: 231.16667
-        height: 235
+        width: 141
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: Idel_3_1
       rect:
         serializedVersion: 2
-        x: 231
-        y: 0
-        width: 231.16667
-        height: 235
+        x: 287
+        y: 4
+        width: 139
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,10 +198,10 @@ TextureImporter:
       name: Idel_3_2
       rect:
         serializedVersion: 2
-        x: 462
-        y: 0
-        width: 231.16667
-        height: 235
+        x: 509
+        y: 1
+        width: 134
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +219,10 @@ TextureImporter:
       name: Idel_3_3
       rect:
         serializedVersion: 2
-        x: 693
-        y: 0
-        width: 231.16667
-        height: 235
+        x: 742
+        y: 2
+        width: 128
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: Idel_3_4
       rect:
         serializedVersion: 2
-        x: 924
-        y: 0
-        width: 231.16667
-        height: 235
+        x: 982
+        y: 1
+        width: 128
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: Idel_3_5
       rect:
         serializedVersion: 2
-        x: 1155
-        y: 0
-        width: 231.16667
-        height: 235
+        x: 1191
+        y: 2
+        width: 128
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

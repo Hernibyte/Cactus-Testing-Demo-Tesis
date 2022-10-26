@@ -159,10 +159,10 @@ TextureImporter:
       name: Recoger_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 41
+        y: 1
+        width: 143
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,10 +180,10 @@ TextureImporter:
       name: Recoger_1
       rect:
         serializedVersion: 2
-        x: 231
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 276
+        y: 2
+        width: 141
+        height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,10 +201,10 @@ TextureImporter:
       name: Recoger_2
       rect:
         serializedVersion: 2
-        x: 462
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 516
+        y: 1
+        width: 148
+        height: 161
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +222,10 @@ TextureImporter:
       name: Recoger_3
       rect:
         serializedVersion: 2
-        x: 693
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 730
+        y: 3
+        width: 148
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,10 +243,10 @@ TextureImporter:
       name: Recoger_4
       rect:
         serializedVersion: 2
-        x: 924
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 978
+        y: 4
+        width: 148
+        height: 176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +264,10 @@ TextureImporter:
       name: Recoger_5
       rect:
         serializedVersion: 2
-        x: 1155
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 1208
+        y: 1
+        width: 136
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,10 +285,10 @@ TextureImporter:
       name: Recoger_6
       rect:
         serializedVersion: 2
-        x: 1386
-        y: 0
-        width: 231.85715
-        height: 235
+        x: 1450
+        y: 2
+        width: 133
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
