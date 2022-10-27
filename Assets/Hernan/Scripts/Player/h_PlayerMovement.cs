@@ -65,7 +65,12 @@ public class h_PlayerMovement : MonoBehaviour
         {
             if (h_Utils.LayerMaskContains(floorLayerMask, collision.gameObject.layer))
             {
-                if (collision.GetContact(0).normal == Vector2.up) isGrounded = true;
+                if (collision.GetContact(0).normal == Vector2.up)
+                {
+                    isGrounded = true;
+                    PlayerAnimator.SetBool("OnAir", false);
+                }
+
                 //foreach (ContactPoint2D contact in collision.contacts)
                 //{
                 //    if (contact.normal == Vector2.up) isGrounded = true;
@@ -80,7 +85,9 @@ public class h_PlayerMovement : MonoBehaviour
         {
             if (h_Utils.LayerMaskContains(floorLayerMask, collision.gameObject.layer))
             {
+                PlayerAnimator.ResetTrigger("StartJump");
                 isGrounded = false;
+                PlayerAnimator.SetBool("OnAir", true);
             }
         }
     }
@@ -157,9 +164,10 @@ public class h_PlayerMovement : MonoBehaviour
         //    }
         //}
 
+    
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerAnimator.SetTrigger("StartJump");
+            //PlayerAnimator.ResetTrigger("StartJump");
             //isGrounded = false;
             //isJumping = true;
             timer = 0;
