@@ -14,6 +14,7 @@ public class h_PlayerMovement : MonoBehaviour
     [SerializeField] Animator PlayerAnimator;
     [HideInInspector] public UnityEvent lookLeft_Event = new UnityEvent();
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
+    [HideInInspector] public UnityEvent pressJump_Event = new UnityEvent();
 
     //h_PlayerAttack playerAttack;
     h_PlayerStats stats;
@@ -174,6 +175,7 @@ public class h_PlayerMovement : MonoBehaviour
             //coyoteTimer = 0;
 
             rb2D.AddForce(new Vector2(0, stats.jumpForce));
+            pressJump_Event.Invoke();
         }
 
         //if (isJumping && Input.GetKey(KeyCode.Space))

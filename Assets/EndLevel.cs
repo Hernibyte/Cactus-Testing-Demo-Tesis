@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class EndLevel : MonoBehaviour
 {
@@ -19,12 +20,14 @@ public class EndLevel : MonoBehaviour
     public TextMeshProUGUI finalTime;
     public LevelManager LvlM;
     public List<colectable> colectableItems;
-    public List<Image> images; 
+    public List<Image> images;
+    public UnityEvent endLvLCallback = new UnityEvent();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            endLvLCallback.Invoke();
             endLvlPanel.SetActive(true);
             Time.timeScale = 0;
             finalTime.SetText("Final Time: " + LvlM.min.ToString() + ":" + LvlM.timer.ToString("F2")) ;
