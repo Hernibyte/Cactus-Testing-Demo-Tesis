@@ -10,7 +10,7 @@ public class h_MenuManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("level tutorial");
+        SceneManager.LoadScene(selectedLevel);
     }
 
     public void Credits()
@@ -26,6 +26,17 @@ public class h_MenuManager : MonoBehaviour
     public void Options()
     {
         options_Panel.SetActive(!options_Panel.activeSelf);
+    }
+
+    public void ChangeLevelSelected(string level)
+    {
+        selectedLevel = level;
+        selectedView.text = level;
+    }
+
+    public void SelectLevel()
+    {
+        levelSelector.SetActive(!levelSelector.activeSelf);
     }
 
     public void ApplyNewRes()
@@ -57,6 +68,9 @@ public class h_MenuManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject options_Panel;
+    [SerializeField] private GameObject levelSelector;
+    [SerializeField] private TMP_Text selectedView;
     [SerializeField] private TMP_Dropdown options_Dropdown;
     private Dictionary<int, Resolution> reses = new Dictionary<int, Resolution>();
+    public string selectedLevel = "level tutorial";
 }
