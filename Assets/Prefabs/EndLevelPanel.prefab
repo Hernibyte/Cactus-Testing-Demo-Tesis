@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4242681917904558397}
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4242681917904558397}
         m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
@@ -1200,6 +1200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931465162057550384}
+  - component: {fileID: 4242681917904558397}
   m_Layer: 5
   m_Name: EndLevelPanel
   m_TagString: Untagged
@@ -1227,6 +1228,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4242681917904558397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931465162057550385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b9a42913a36a144a173a7ee396a4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualLvl: 
+  PausePanel: {fileID: 0}
+  ControlsPanel: {fileID: 0}
+  options_Panel: {fileID: 0}
+  options_Dropdown: {fileID: 0}
 --- !u!1 &1931465162369977823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,7 +1646,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4242681917904558397}
         m_MethodName: NextLevel
         m_Mode: 5
         m_Arguments:
