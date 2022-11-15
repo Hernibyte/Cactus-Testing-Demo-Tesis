@@ -34,6 +34,11 @@ public class h_MenuManager : MonoBehaviour
         selectedView.text = level;
     }
 
+    public void MoveImagen(float x)
+    {
+        selectionImagen.transform.localPosition = new Vector3(x, selectionImagen.transform.localPosition.y);
+    }
+
     public void SelectLevel()
     {
         levelSelector.SetActive(!levelSelector.activeSelf);
@@ -73,4 +78,5 @@ public class h_MenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown options_Dropdown;
     private Dictionary<int, Resolution> reses = new Dictionary<int, Resolution>();
     public string selectedLevel = "level tutorial";
+    [SerializeField] private GameObject selectionImagen;
 }
