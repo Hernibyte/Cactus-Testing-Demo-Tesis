@@ -11,11 +11,25 @@ public class UI_Pause : MonoBehaviour
     public string actualLvl;
     public GameObject PausePanel;
     public GameObject ControlsPanel;
+    
+    [SerializeField] private GameObject options_Panel;
+    [SerializeField] private TMP_Dropdown options_Dropdown;
+    private Dictionary<int, Resolution> reses = new Dictionary<int, Resolution>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        List<string> reses_string = new List<string>();
+        int i = 0;
+
+        foreach (Resolution res in Screen.resolutions)
+        {
+            reses.Add(i, res);
+            ++i;
+
+            reses_string.Add(res.width + "x" + res.height);
+        }
+        options_Dropdown.AddOptions(reses_string);
     }
 
     // Update is called once per frame
@@ -43,6 +57,20 @@ public class UI_Pause : MonoBehaviour
             PausePanel.SetActive(true);
         }
     }
+    
+    public void Options()
+    {
+        options_Panel.SetActive(!options_Panel.activeSelf);
+    }
+
+    public void ApplyNewRes()
+    {
+        Resolution newRes;
+        bool si = reses.TryGetValue(options_Dropdown.value, out newRes);
+
+        if (si) Screen.SetResolution(newRes.width, newRes.height, true);
+    }
+    
     public void RestartLevel()
     {
         Time.timeScale = 1;
