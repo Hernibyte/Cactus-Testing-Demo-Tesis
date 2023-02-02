@@ -61,3 +61,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Packages/packages-lock.json
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset.meta
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
+Assets/TextMesh Pro.meta
