@@ -168,7 +168,7 @@ public class h_PlayerMovement : MonoBehaviour
     
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            //PlayerAnimator.ResetTrigger("StartJump");
+            PlayerAnimator.SetTrigger("StartJump");
             //isGrounded = false;
             //isJumping = true;
             timer = 0;
