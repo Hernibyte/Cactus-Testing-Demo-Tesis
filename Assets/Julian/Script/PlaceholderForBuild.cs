@@ -10,12 +10,17 @@ public class PlaceholderForBuild : MonoBehaviour
     public h_GameManager gm;
     public LevelManager LvlM;
     public List<Sprite> colectables;
+    public Dissolve dissolve;
+
     [SerializeField] Animator PlayerAnimator;
+
     // Start is called before the first frame update
     void Awake()
     {
         gm = FindObjectOfType<h_GameManager>();
     }
+
+
 
 
 
@@ -62,9 +67,26 @@ public class PlaceholderForBuild : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bad")
         {
-           this.gameObject.transform.position = checkpoint;
+            Death();
         }  
 
 
+    }
+
+    public void Death()
+    {
+        dissolve.isDissolving = true;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        StartCoroutine(Respawn());
+
+    }
+    IEnumerator Respawn()
+    {
+
+        yield return new WaitForSeconds(1.2f);
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        dissolve.isDissolving = false;
+        this.gameObject.transform.position = checkpoint;
     }
 }

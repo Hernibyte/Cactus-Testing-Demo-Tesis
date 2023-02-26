@@ -7,6 +7,6 @@ public class AchievementsAlert : MonoBehaviour
 {
     private void Awake()
     {
-        AchievementsManager.Instance.Si();
+      //  AchievementsManager.Instance.Si();
     }
 }
