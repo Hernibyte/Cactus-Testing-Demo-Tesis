@@ -126,6 +126,8 @@ public class h_PlayerAttack : MonoBehaviour
             chagedRangeAttackAvailable = false;
             delayChargedRangeAttack = 0f;
         }
+        
+        Debug.Log(chagedRangeAttackAvailable);
 
         if (flowerPowerUpObtained)
             if (flowerRangeAttackAvailable && Input.GetKey(KeyCode.F))
