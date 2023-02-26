@@ -10,14 +10,16 @@ public class PlaceholderForBuild : MonoBehaviour
     public h_GameManager gm;
     public LevelManager LvlM;
     public List<Sprite> colectables;
+    public float timeLess;
     [SerializeField] Animator PlayerAnimator;
-    // Start is called before the first frame update
+
+    private LevelManager _levelManager;
+    
     void Awake()
     {
         gm = FindObjectOfType<h_GameManager>();
+        _levelManager = FindObjectOfType<LevelManager>();
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,6 +55,8 @@ public class PlaceholderForBuild : MonoBehaviour
                 LvlM.collectedColectables.Add(colectables[4]);
                 LvlM.notCollectedColectables.Remove(colectables[4]);
             }
+            
+            _levelManager.TimeLess(timeLess);
 
             Destroy(collision.gameObject);
 

@@ -31,4 +31,19 @@ public class LevelManager : MonoBehaviour
         }
         actualTime.SetText(min.ToString() + " : " + timer.ToString("F2"));
     }
+
+    public void TimeLess(float t)
+    {
+        timer -= t;
+        if (timer < 0)
+        {
+            if (min > 0)
+            {
+                min--;
+                float a = timer * -1;
+                timer = 60 - a;
+            }
+            else timer = 0;
+        }
+    }
 }
