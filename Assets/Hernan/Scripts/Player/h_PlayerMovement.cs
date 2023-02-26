@@ -16,6 +16,8 @@ public class h_PlayerMovement : MonoBehaviour
     [HideInInspector] public UnityEvent lookRight_Event = new UnityEvent();
     [HideInInspector] public UnityEvent pressJump_Event = new UnityEvent();
 
+    public float x;
+    
     //h_PlayerAttack playerAttack;
     h_PlayerStats stats;
     public Rigidbody2D rb2D { get; set; }
@@ -101,7 +103,7 @@ public class h_PlayerMovement : MonoBehaviour
         //Collider2D coll2 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[3].x, checkersPositions[3].y), checkersSize[3], 0, floorLayerMask);
         //Collider2D coll1 = Physics2D.OverlapBox(transform.position + new Vector3(checkersPositions[2].x, checkersPositions[2].y), checkersSize[2], 0, floorLayerMask);
 
-        float x = Input.GetAxis("Horizontal") * stats.movementSpeed;
+        x = Input.GetAxis("Horizontal") * stats.movementSpeed;
 
         //if (coll1)
         //    if (x < 0)
