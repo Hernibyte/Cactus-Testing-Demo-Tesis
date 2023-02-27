@@ -11,6 +11,7 @@ public class UI_Pause : MonoBehaviour
     public string actualLvl;
     public GameObject PausePanel;
     public GameObject ControlsPanel;
+    public h_CameraController cameraController;
     
     [SerializeField] private GameObject options_Panel;
     [SerializeField] private TMP_Dropdown options_Dropdown;
@@ -49,12 +50,14 @@ public class UI_Pause : MonoBehaviour
             Time.timeScale = 1;
             PausePanel.SetActive(false);
             CloseControlls();
+            cameraController.changeZoom();
         }
         else
         {
             paused = true;
             Time.timeScale = 0;
             PausePanel.SetActive(true);
+            cameraController.changeZoom();
         }
     }
     
