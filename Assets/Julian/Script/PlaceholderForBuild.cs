@@ -10,14 +10,18 @@ public class PlaceholderForBuild : MonoBehaviour
     public h_GameManager gm;
     public LevelManager LvlM;
     public List<Sprite> colectables;
+    public float timeLess;
     public Dissolve dissolve;
 
     [SerializeField] Animator PlayerAnimator;
 
+    private LevelManager _levelManager;
+    
     // Start is called before the first frame update
     void Awake()
     {
         gm = FindObjectOfType<h_GameManager>();
+        _levelManager = FindObjectOfType<LevelManager>();
     }
 
 
@@ -59,6 +63,8 @@ public class PlaceholderForBuild : MonoBehaviour
                 LvlM.notCollectedColectables.Remove(colectables[4]);
             }
 
+            _levelManager.TimeLess(timeLess);
+            
             Destroy(collision.gameObject);
 
         }
