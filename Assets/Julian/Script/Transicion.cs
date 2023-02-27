@@ -8,15 +8,17 @@ public class Transicion : MonoBehaviour
     public string nextLevel;
     public float timeToChange;
     //
-
-    void Start()
+    public void Start()
     {
-        StartCoroutine(ChangeScenes());
+        Time.timeScale = 1;
     }
-
-    IEnumerator ChangeScenes()
+    private void Update()
     {
-        yield return new WaitForSeconds(timeToChange);
-        SceneManager.LoadScene(nextLevel);
+        timeToChange -= Time.deltaTime;
+        if (timeToChange <= 0)
+        { 
+            SceneManager.LoadScene(nextLevel);
+        }
+
     }
 }

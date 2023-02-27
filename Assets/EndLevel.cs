@@ -30,6 +30,7 @@ public class EndLevel : MonoBehaviour
             endLvLCallback.Invoke();
             endLvlPanel.SetActive(true);
             Time.timeScale = 0;
+            if (finalTime != null)
             finalTime.SetText("Final Time: " + LvlM.min.ToString() + ":" + LvlM.timer.ToString("F2")) ;
             if (LvlM.npcInLvl)
             {

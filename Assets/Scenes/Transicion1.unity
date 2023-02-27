@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 448437867}
   - component: {fileID: 448437866}
   - component: {fileID: 448437865}
-  - component: {fileID: 448437864}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -198,24 +197,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &448437864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448437863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7935fa879c886459ae92d3472bc52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  options_Panel: {fileID: 0}
-  levelSelector: {fileID: 0}
-  selectedView: {fileID: 0}
-  options_Dropdown: {fileID: 0}
-  selectedLevel: level tutorial
-  selectionImagen: {fileID: 0}
 --- !u!114 &448437865
 MonoBehaviour:
   m_ObjectHideFlags: 0
