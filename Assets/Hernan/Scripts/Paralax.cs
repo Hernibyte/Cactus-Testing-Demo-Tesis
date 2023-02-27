@@ -13,9 +13,9 @@ public class Paralax : MonoBehaviour
             transform.position -= new Vector3(playerMovement.x * diff * Time.deltaTime, 0);
 
         if (transform.position.x > maxPos)
-            transform.position = new Vector3(maxPos, 0);
+            transform.position = new Vector3(maxPos, transform.position.y, transform.position.z);
         else if (transform.position.x < minPos)
-            transform.position = new Vector3(minPos, 0);
+            transform.position = new Vector3(minPos, transform.position.y, transform.position.z);
     }
 
     [SerializeField] private h_PlayerMovement playerMovement;
