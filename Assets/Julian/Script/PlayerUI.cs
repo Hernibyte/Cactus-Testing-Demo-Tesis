@@ -139,7 +139,10 @@ public class PlayerUI : MonoBehaviour
     void startDialogueSystem()
     {
         dialogueStarted = true;
+        if (LvlM != null)
+        { 
         LvlM.talkToNPC = true;
+        }
         dialoguePanel.gameObject.SetActive(true);
         dialogFrame.gameObject.SetActive(true);
         if (allBranchesDone)
