@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -7326710424482115437
     second: Idel_3_5
+  - first:
+      213: 1840124636980213082
+    second: Idel_3_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -219,10 +222,10 @@ TextureImporter:
       name: Idel_3_3
       rect:
         serializedVersion: 2
-        x: 742
-        y: 2
-        width: 128
-        height: 188
+        x: 743
+        y: 3
+        width: 129
+        height: 187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +243,10 @@ TextureImporter:
       name: Idel_3_4
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1
+        x: 983
+        y: 2
         width: 128
-        height: 189
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,7 +264,28 @@ TextureImporter:
       name: Idel_3_5
       rect:
         serializedVersion: 2
-        x: 1191
+        x: 1223
+        y: 1
+        width: 128
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390979000bb425a90800000000000000
+      internalID: -7326710424482115437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idel_3_6
+      rect:
+        serializedVersion: 2
+        x: 1432
         y: 2
         width: 128
         height: 188
@@ -272,8 +296,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 390979000bb425a90800000000000000
-      internalID: -7326710424482115437
+      spriteID: a5576a1ab9f698910800000000000000
+      internalID: 1840124636980213082
       vertices: []
       indices: 
       edges: []
