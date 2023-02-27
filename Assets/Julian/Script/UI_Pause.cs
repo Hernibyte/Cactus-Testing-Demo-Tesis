@@ -15,6 +15,9 @@ public class UI_Pause : MonoBehaviour
     
     [SerializeField] private GameObject options_Panel;
     [SerializeField] private TMP_Dropdown options_Dropdown;
+
+    public GameObject player;
+    public GameObject playerInPause;
     private Dictionary<int, Resolution> reses = new Dictionary<int, Resolution>();
 
     // Start is called before the first frame update
@@ -51,13 +54,17 @@ public class UI_Pause : MonoBehaviour
             PausePanel.SetActive(false);
             CloseControlls();
             cameraController.changeZoom();
-        }
+            player.SetActive(true);
+            playerInPause.SetActive(false);
+}
         else
         {
             paused = true;
             Time.timeScale = 0;
             PausePanel.SetActive(true);
             cameraController.changeZoom();
+            player.SetActive(false);
+            playerInPause.SetActive(true);
         }
     }
     
