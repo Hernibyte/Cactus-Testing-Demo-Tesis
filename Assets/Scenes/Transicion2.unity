@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7935fa879c886459ae92d3472bc52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: {fileID: 0}
   options_Panel: {fileID: 0}
   levelSelector: {fileID: 0}
   selectedView: {fileID: 0}
@@ -665,7 +666,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u201CPrick Spike\u201D es un cactus barril, asi que no necesita tomar
-    agua, en serio, lo puedes buscar en Wikipedia."
+    agua. En serio, lo puedes buscar en Wikipedia."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a453cc452ac4848b7d91a60ac0b7c1, type: 2}
   m_sharedMaterial: {fileID: -9132667495666645154, guid: 09a453cc452ac4848b7d91a60ac0b7c1,
