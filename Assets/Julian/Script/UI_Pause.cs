@@ -10,6 +10,8 @@ public class UI_Pause : MonoBehaviour
     bool controllsOpen = false;
     public string actualLvl;
     public GameObject PausePanel;
+    public GameObject PausePanel1;
+    public GameObject PausePanel2;
     public GameObject ControlsPanel;
     public h_CameraController cameraController;
     
@@ -62,6 +64,8 @@ public class UI_Pause : MonoBehaviour
             paused = true;
             Time.timeScale = 0;
             PausePanel.SetActive(true);
+            PausePanel1.SetActive(true);
+            PausePanel2.SetActive(true);
             cameraController.changeZoom();
             player.SetActive(false);
             playerInPause.SetActive(true);
