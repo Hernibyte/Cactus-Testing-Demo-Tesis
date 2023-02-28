@@ -106,4 +106,13 @@ public class UI_Pause : MonoBehaviour
     {
         ControlsPanel.SetActive(false);
     }
+
+    public void showGameObject(GameObject go)
+    {
+        go.SetActive(true);
+    }
+    public void hideGameObject(GameObject go)
+    {
+        go.SetActive(false);
+    }
 }
