@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: level 3
-  timeToChange: 20
+  timeToChange: 7.5
 --- !u!1 &1609710261
 GameObject:
   m_ObjectHideFlags: 0
