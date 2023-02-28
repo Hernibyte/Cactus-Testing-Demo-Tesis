@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     public bool talkToNPC;
     public Sprite npcImage;
 
+    public string lvlName;
+
     private void Start()
     {
         if (npcInLvl)
@@ -44,6 +46,14 @@ public class LevelManager : MonoBehaviour
                 timer = 60 - a;
             }
             else timer = 0;
+        }
+    }
+
+    public void SaveLvLRecordTime()
+    {
+        if (PlayerPrefs.GetFloat(lvlName) > timer + (min * 60))
+        {
+            PlayerPrefs.SetFloat(lvlName, timer + (min * 60));
         }
     }
 }

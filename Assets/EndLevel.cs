@@ -27,6 +27,7 @@ public class EndLevel : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            LvlM.SaveLvLRecordTime();
             endLvLCallback.Invoke();
             endLvlPanel.SetActive(true);
             Time.timeScale = 0;

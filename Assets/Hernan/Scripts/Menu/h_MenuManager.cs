@@ -52,6 +52,15 @@ public class h_MenuManager : MonoBehaviour
         if (si) Screen.SetResolution(newRes.width, newRes.height, true);
     }
 
+    public void SetHighScore(string lvlName)
+    {
+        float a = PlayerPrefs.GetFloat(lvlName);
+        float min = a / 60;
+        float sec = a % 60;
+
+        highScore.text = "highscore: " + (int)min + ":" + (int)sec;
+    }
+
     public void Exit()
     {
         Application.Quit();
@@ -72,6 +81,7 @@ public class h_MenuManager : MonoBehaviour
         options_Dropdown.AddOptions(reses_string);
     }
 
+    [SerializeField] private TMP_Text highScore;
     [SerializeField] private GameObject options_Panel;
     [SerializeField] private GameObject levelSelector;
     [SerializeField] private TMP_Text selectedView;
