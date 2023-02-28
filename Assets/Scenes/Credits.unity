@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7935fa879c886459ae92d3472bc52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: {fileID: 0}
   options_Panel: {fileID: 0}
   levelSelector: {fileID: 0}
   selectedView: {fileID: 0}
@@ -870,8 +871,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Art: Nicky y Fer\n\nGame design: Naza, Sarduc y Mati\n\nProg: Hernan y
-    Juli\n\n(Est\xE1 todo as\xED nomas porque es placeholder)"
+  m_text: "Art:\n Nicole Casaux y Fernando Urreiztieta\n\nGame design: \nNazarena
+    Fazzolari, Fran Imperioso y Matias Szamrynskyj\n\nProg:\n Hernan Gossa y Julian
+    Bega\n\nAgradecimientoS espECIALES\n rOY MAGARINOS Y ANDRES VERGEZ"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a453cc452ac4848b7d91a60ac0b7c1, type: 2}
   m_sharedMaterial: {fileID: -9132667495666645154, guid: 09a453cc452ac4848b7d91a60ac0b7c1,
@@ -899,14 +901,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
