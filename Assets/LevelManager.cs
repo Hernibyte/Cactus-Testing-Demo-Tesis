@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
 
     public void SaveLvLRecordTime()
     {
-        if (PlayerPrefs.GetFloat(lvlName) > timer + (min * 60))
+        if (PlayerPrefs.GetFloat(lvlName) > timer + (min * 60) || PlayerPrefs.GetFloat(lvlName) <= 0)
         {
             PlayerPrefs.SetFloat(lvlName, timer + (min * 60));
         }
