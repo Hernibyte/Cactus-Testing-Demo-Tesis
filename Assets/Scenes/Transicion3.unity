@@ -664,8 +664,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201C...Ten\xEDa las ra\xEDces cansadas pero no importaba, el viejo cactus
-    deb\xEDa continuar avanzando, todav\xEDa quedaba mucho por descubrir.\u201D"
+  m_text: "\u201C...Tenia las raices cansadas pero no importaba, el viejo cactus
+    deb\xEDa continuar avanzando, todavia quedaba mucho por descubrir.\u201D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a453cc452ac4848b7d91a60ac0b7c1, type: 2}
   m_sharedMaterial: {fileID: -9132667495666645154, guid: 09a453cc452ac4848b7d91a60ac0b7c1,
